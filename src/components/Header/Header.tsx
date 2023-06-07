@@ -40,6 +40,8 @@ font-size: 18px;
 
 function Header() {
 
+  // Typer les props de lien 
+
  return (
   <StyledHeader>
     <NavContainer>
