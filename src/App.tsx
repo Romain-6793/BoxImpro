@@ -9,8 +9,6 @@ import Specialists from "./pages/Specialists/Specialists";
 import Exercices from "./pages/Exercices/Exercices";
 
 function App() {
-  // Typer le routeur
-
   return (
     <div className='App'>
       <Header />
