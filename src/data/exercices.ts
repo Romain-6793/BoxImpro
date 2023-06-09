@@ -1,5 +1,18 @@
-export const exercices = [
+
+export type Exercice = {
+    id: number;
+    title: string;
+    type: string;
+    interest: string;
+    description: string;
+    advices: string;
+    variants: string;
+}
+
+
+export const exercices: Exercice[] = [
     {
+        id: 6083279184,
         title: "Compter jusqu'à 20 en groupe",
         type: "Écoute collective",
         interest: "Recentrer le groupe, développer l'écoute et la cohésion de groupe.",
@@ -8,6 +21,7 @@ export const exercices = [
         variants: "Rester statique en position «relaxation». Marcher plus vite.Compter dans un ordre décroissant à partir de 20 ou du nombre de participants(dans ce cas là on peut instaurer la règle «chacun ne parle qu'une fois»).Ou dire son prénom jusqu'à ce que chacun ait dit le sien."
     },
     {
+        id: 1118635757686,
         title: "Traverser la salle en aveugle",
         type: "Confiance",
         interest: "Développer pour chacun la confiance en soi. Développer la sensation de l'espace.",
@@ -16,6 +30,7 @@ export const exercices = [
         variants: "Faire l'exercice en trottinant, en marche arrière, en glissant sur le sol. Faire un bruit de distraction pour tester le relâchement. Donner pour l'objectif que le joueur s'arrête le plus près du groupe possible sans le toucher."
     },
     {
+        id: 88346512070,
         title: "Je m'assieds, tu te lèves",
         type: "Écoute collective",
         interest: "Un exercice difficile mais puissant pour développer une écoute de groupe de qualité.",
@@ -24,6 +39,7 @@ export const exercices = [
         variants: "On complique le jeu en faisant se lever 2 personnes à la fois et, au moment où elles se rasseyent 2 autres doivent se lever et ainsi de suite."
     },
     {
+        id: 953349055791,
         title: "Associations d'idées",
         type: "Imaginaire verbal",
         interest: "Exercice de base pour stimuler la créativité verbale, prendre confiance dans son imaginaire. Prépare à l'exercice dissociations d'idées». Peut encourager à développer son vocabulaire. Exercice dynamisant.",
@@ -32,6 +48,7 @@ export const exercices = [
         variants: "Le voisin associe phonétiquement un mot à celui qui a été lancé (exemple 'banal' - d'unaval')."
     },
     {
+        id: 479145570659,
         title: "Mime de films",
         type: "Imaginaire corporel",
         interest: "Savoir raconter une histoire avec le corps.",
@@ -40,6 +57,7 @@ export const exercices = [
         variants: "Peut être utilisé avec tous types d'oeuvres comme les comptines, les mythes, les romans, les pièces de théâtre (selon le public visé)."
     },
     {
+        id: 7098513482,
         title: "Seul face aux autres",
         type: "Travail du regard",
         interest: "Accepter le regard des autres et regarder vraiment et individuellement chaque personne du groupe. Aiguiser sa notion du temps.",
@@ -48,6 +66,7 @@ export const exercices = [
         variants: "Cet exercice peut se faire avec un perturbateur qui teste le relâchement du participant."
     },
     {
+        id: 1287600537838,
         title: "Déambulation consciente",
         type: "Gestion de l'espace",
         interest: "Être à l'écoute de son corps et de celui des autres ainsi que de la dynamique rythmique.",
@@ -56,6 +75,7 @@ export const exercices = [
         variants: "Durant la marche, l'intervenant donne des indications qui interrompent la marche précédente, afin de réagir dans l'urgence et de ne pas laisser les participants se complaire dans un rythme de marche. Cette indication doit être exécutée en quelque secondes et immédiatement. Exemple d'indication : classez-vous par ordre croissant en taille, classez-vous par ordre de votre mois de naissance, effectuez tous ensemble un carré, un triangle..."
     },
     {
+        id: 539885626108,
         title: "La minute",
         type: "Conscience du temps",
         interest: "Jouer tout en ayant conscience du temps qui passe. Prendre en compte plusieurs paramètres sur le plateau.",
@@ -64,6 +84,7 @@ export const exercices = [
         variants: "Il est possible de donner un thème et une catégorie au comédien. Ou même de varier le temps."
     },
     {
+        id: 70503580110,
         title: "Plus près de toi mon deux.",
         type: "Conscience du temps.",
         interest: "Jouer tout en ayant conscience du temps qui passe. Prendre en compte plusieurs paramètres sur le plateau. Jouer sur plusieurs tableaux.",
@@ -72,6 +93,7 @@ export const exercices = [
         variants: "On peut modifier le temps, jouer avec 'ption 4 ou non."
     },
     {
+        id: 167538547479,
         title: "Le sculpteur",
         type: "Imaginaire corporel",
         interest: "Amener les participants à dissocier les parties de leurs corps, et à les diriger. Développer ainsi chez eux la conscience et la maîtrise des parties de leur corps.",

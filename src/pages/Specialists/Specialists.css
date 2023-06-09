@@ -1,0 +1,15 @@
+.spe-title {
+    color: #FF7417;
+    font-family: 'ChunkFive', 'Roboto', 'Arial';
+}
+
+.spe-subtitle {
+    color: purple;
+    margin-top: -25px;
+}
+
+.p-card {
+    width: 75%;
+    background: purple;
+    margin-bottom: 20px;
+}

@@ -1,11 +1,10 @@
 import "./Header.css";
 import { Menubar } from "primereact/menubar";
+import { MenuItem } from "primereact/menuitem";
 import BoxImproLogo from "../../assets/boximpro-logo.png";
 
-function Header() {
-  // Typer les props de lien
-
-  const navlist = [
+function Header(): JSX.Element {
+  const navlist: MenuItem[] = [
     {
       label: "Accueil",
       icon: "pi pi-fw pi-home",

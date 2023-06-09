@@ -17,5 +17,8 @@
     height: 100px;
     width: 300%;
     background: purple;
-    
+}
+
+.p-menuitem {
+    background: purple;
 }
