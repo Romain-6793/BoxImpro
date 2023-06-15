@@ -3,16 +3,7 @@ import BoxImproBg from "../../assets/boximpro-background.png";
 
 const Home = (): JSX.Element => {
   return (
-    // <div className='homepage-flex'>
-    //   <Card
-    //     title="Ouvrez la boîte à idées de l'improvisateur !"
-    //     subTitle="Des dizaines d'exercices et de catégories à votre disposition"
-    //   >
-    //     <img src={BoxImproBg} className='background'></img>
-    //   </Card>
-    // </div>
-
-    <div className='homepage-flex'>
+    <div className='flex-center'>
       <div className='hero'>
         <div className='hero-text'>
           <h1>Ouvrez la boîte à idées de l'improvisateur !</h1>

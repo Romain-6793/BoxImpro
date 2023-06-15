@@ -1,14 +1,5 @@
 
-export type Exercice = {
-    id: number;
-    title: string;
-    type: string;
-    interest: string;
-    description: string;
-    advices: string;
-    variants: string;
-}
-
+import { Exercice } from "./types"
 
 export const exercices: Exercice[] = [
     {
@@ -16,9 +7,9 @@ export const exercices: Exercice[] = [
         title: "Compter jusqu'à 20 en groupe",
         type: "Écoute collective",
         interest: "Recentrer le groupe, développer l'écoute et la cohésion de groupe.",
-        description: "Le groupe marche dans l'espace et doit compter de 0 à 20 sans que plusieurs personnes disent le même chiffre en même temps, ou que quelqu'un se trompe, sinon on repart à 0.",
-        advices: "Parler fort et distinctement, marcher en occupant tout l'espace.Les participants ne doivent pas marcher en rond.Leur demander de ne pas se précipiter, de se regarder, s'écouter, de laisser de la place à tout le monde.",
-        variants: "Rester statique en position «relaxation». Marcher plus vite.Compter dans un ordre décroissant à partir de 20 ou du nombre de participants(dans ce cas là on peut instaurer la règle «chacun ne parle qu'une fois»).Ou dire son prénom jusqu'à ce que chacun ait dit le sien."
+        description: "Le groupe marche dans l'espace et doit compter de 0 à 20 sans que plusieurs personnes ne disent le même chiffre en même temps, ou que quelqu'un se trompe, sinon on repart à 0.",
+        advices: "Parler fort et distinctement, marcher en occupant tout l'espace. Les participants ne doivent pas marcher en rond. Leur demander de ne pas se précipiter, de se regarder, s'écouter, de laisser de la place à tout le monde.",
+        variants: "Rester statique en position «relaxation». Marcher plus vite. Compter dans un ordre décroissant à partir de 20 ou du nombre de participants (dans ce cas là on peut instaurer la règle «chacun ne parle qu'une fois»). Ou dire son prénom jusqu'à ce que chacun ait dit le sien."
     },
     {
         id: 1118635757686,
@@ -45,7 +36,7 @@ export const exercices: Exercice[] = [
         interest: "Exercice de base pour stimuler la créativité verbale, prendre confiance dans son imaginaire. Prépare à l'exercice dissociations d'idées». Peut encourager à développer son vocabulaire. Exercice dynamisant.",
         description: "Le groupe est assis en cercle. Un participant lance un mot, son voisin doit en lancer un autre en rapport avec celui-ci, de quelque manière que ce soit...",
         advices: "Éviter de préparer son mot à l'avance et de rester dans un même champ lexical. Être détendu. l'enchaînement des mots doit rester rythmé. Pousser ceux qui se découragent ou résistent.",
-        variants: "Le voisin associe phonétiquement un mot à celui qui a été lancé (exemple 'banal' - d'unaval')."
+        variants: "Le voisin associe phonétiquement un mot à celui qui a été lancé (exemple 'banal' - 'naval')."
     },
     {
         id: 479145570659,
@@ -80,7 +71,7 @@ export const exercices: Exercice[] = [
         type: "Conscience du temps",
         interest: "Jouer tout en ayant conscience du temps qui passe. Prendre en compte plusieurs paramètres sur le plateau.",
         description: "Demander à un comédien de venir improviser pendant une minute, pendant que l'animateur chronomètre à la seconde près le temps. Puis lui demander le temps précis pendant lequel il pense avoir été sur scène et comparer avec le temps réel.",
-        advices: "Le comédien doit essayer de c'estructurer' son improvisation, c'est à dire de traiter son sujet pour un temps donné, et d'y apporter une conclusion plus ou moins rapidement. On ne jouera pas avec le même rythme une impro de 1 minute et une impro de 3 minutes.",
+        advices: "Le comédien doit essayer de structurer son improvisation, c'est à dire de traiter son sujet pour un temps donné, et d'y apporter une conclusion plus ou moins rapidement. On ne jouera pas avec le même rythme une impro de 1 minute et une impro de 3 minutes.",
         variants: "Il est possible de donner un thème et une catégorie au comédien. Ou même de varier le temps."
     },
     {

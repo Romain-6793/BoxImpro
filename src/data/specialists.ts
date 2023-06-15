@@ -1,14 +1,5 @@
 
-export type Specialist = {
-    id: number;
-    title: string;
-    specialistType: string;
-    improType: string;
-    numberOfPlayers: string;
-    duration: string;
-    description: string;
-}
-
+import { Specialist } from "./types"
 
 export const specialists: Specialist[] = [
     {

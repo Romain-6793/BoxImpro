@@ -1,6 +1,6 @@
 import "./Footer.css";
 
-function Header(): JSX.Element {
+function Footer(): JSX.Element {
   return (
     <div>
       <footer>Copyright BOXIMPRO © 2023</footer>
@@ -8,4 +8,4 @@ function Header(): JSX.Element {
   );
 }
 
-export default Header;
+export default Footer;

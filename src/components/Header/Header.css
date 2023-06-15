@@ -17,8 +17,10 @@
     height: 100px;
     width: 300%;
     background: purple;
+    color: #fff;
 }
 
 .p-menuitem {
     background: purple;
+    color: #fff;
 }

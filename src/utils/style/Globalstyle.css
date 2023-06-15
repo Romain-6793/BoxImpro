@@ -1,0 +1,22 @@
+
+:root {
+    --footer-height: 100px;
+    --width-full : 100%;
+}
+
+
+.flex {
+    display: flex;
+}
+
+.flex-column {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

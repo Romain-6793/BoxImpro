@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import "primereact/resources/themes/vela-blue/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
-import "./App.css";
+import "./utils/style/Globalstyle.css";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Home from "./pages/Home/Home";
