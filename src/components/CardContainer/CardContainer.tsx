@@ -1,9 +1,34 @@
-import "./CardContainer.css";
+import styled from "styled-components";
+import styleVar from "../../utils/style/style-variables";
+import colors from "../../utils/style/colors";
 import { Card } from "primereact/card";
 import { useState, useEffect } from "react";
 import { Exercice, Specialist } from "../../data/types";
 import { specialists } from "../../data/specialists";
 import { exercices } from "../../data/exercices";
+
+const StyledDiv = styled.div`
+  .p-card {
+    font-family: ${styleVar.fontFamily};
+    width: 75%;
+    background: ${colors.tertiary};
+    border: 1px solid ${colors.primary};
+    color: ${colors.primary};
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .p-card-title {
+    font-weight: normal;
+    background: ${colors.primary};
+    text-align: center;
+    color: ${colors.white};
+    border-radius: ${styleVar.borderRadius}px;
+  }
+`;
+
+const StyledProperty = styled.span`
+  text-decoration: underline;
+`;
 
 const CardContainer = () => {
   const [currentURL, setCurrentURL] = useState(window.location.href);
@@ -23,31 +48,55 @@ const CardContainer = () => {
   }, []);
 
   return currentURL.includes("exercices") ? (
-    <div className='flex-column'>
+    <StyledDiv className='flex-column'>
       {exercices &&
         exercices.map((index: Exercice) => (
           <Card title={index.title} key={index.id}>
-            <p>Type d'impro: {index.type}</p>
-            <p>Intérêt : {index.interest}</p>
-            <p>Description : {index.description}</p>
-            <p>Conseils: {index.advices}</p>
-            <p>Variantes : {index.variants}</p>
+            <p>
+              <StyledProperty>Type d'impro</StyledProperty> : {index.type}
+            </p>
+            <p>
+              <StyledProperty>Intérêt</StyledProperty> : {index.interest}
+            </p>
+            <p>
+              <StyledProperty>Description</StyledProperty> : {index.description}
+            </p>
+            <p>
+              <StyledProperty>Conseils</StyledProperty> : {index.advices}
+            </p>
+            <p>
+              <StyledProperty>Variantes</StyledProperty> : {index.variants}
+            </p>
           </Card>
         ))}
-    </div>
+    </StyledDiv>
   ) : (
-    <div className='flex-column'>
+    <StyledDiv className='flex-column'>
       {specialists &&
         specialists.map((index: Specialist) => (
           <Card title={index.title} key={index.id}>
-            <p>Type de catégorie: {index.specialistType}</p>
-            <p>Type d'impro conseillé : {index.improType}</p>
-            <p>Nombre de joueurs conseillé : {index.numberOfPlayers}</p>
-            <p>Durée conseillée: {index.duration}</p>
-            <p>Description : {index.description}</p>
+            <p>
+              <StyledProperty>Type de catégorie</StyledProperty> :{" "}
+              {index.specialistType}
+            </p>
+            <p>
+              <StyledProperty>Type d'impro conseillé</StyledProperty> :{" "}
+              {index.improType}
+            </p>
+            <p>
+              <StyledProperty>Nombre de joueurs conseillé</StyledProperty> :{" "}
+              {index.numberOfPlayers}
+            </p>
+            <p>
+              <StyledProperty>Durée conseillée</StyledProperty> :{" "}
+              {index.duration}
+            </p>
+            <p>
+              <StyledProperty>Description</StyledProperty> : {index.description}
+            </p>
           </Card>
         ))}
-    </div>
+    </StyledDiv>
   );
 };
 

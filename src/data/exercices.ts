@@ -76,12 +76,12 @@ export const exercices: Exercice[] = [
     },
     {
         id: 70503580110,
-        title: "Plus près de toi mon deux.",
+        title: "Plus près de toi mon deux",
         type: "Conscience du temps.",
         interest: "Jouer tout en ayant conscience du temps qui passe. Prendre en compte plusieurs paramètres sur le plateau. Jouer sur plusieurs tableaux.",
         description: "Deux joueurs vont 's'affronter' sur une improvisation de plus ou moins 2 minutes. Chacun devra placer un mot choisi de manière aléatoire et que l'autre ignore. Seulement, il devra le placer le plus près possible de la limite des 2 minutes. À partir de là, plusieurs scénari sont possibles pour l'exercice. 1) Le joueur A dit son mot avant les 2 minutes et le joueur B ne l'a pas dit, le joueur A l'emporte. 2) Aucun des joueurs n'a dit son mot durant les 2 minutes, l'improvisation continue et c'est alors celui qui le dit le plus tôt qui l'emporte et met fin à l'exercice. 3) Le joueur A a dit son mot bien avant les 2 minutes (à 1 min 30 par exemple) mais le joueur B a dit son mot à 1 min 55, c'est le joueur B qui l'emporte. Il n'aurait pas pu dépasser les 2 min dans ce cas de figure. 4) Option qui peut constituer une variante : le joueur A a dit volontairement ou non, le mot du joueur B, le joueur B a perdu car son mot a été prononcé par un autre que lui.",
         advices: "Ne pas tout de suite amener son adversaire sur la piste du mot que l'on a à dire, tenter de saisir le temps qui passe, et de surprendre son adversaire. Penser à tous les sens que peut revêtir un mot. Essayer de faire en sorte que la prononciation du mot ait un sens dans le contexte de l'improvisation.",
-        variants: "On peut modifier le temps, jouer avec 'ption 4 ou non."
+        variants: "On peut modifier le temps, jouer avec l'option 4 ou non."
     },
     {
         id: 167538547479,

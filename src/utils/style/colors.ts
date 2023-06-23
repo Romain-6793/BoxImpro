@@ -1,13 +1,13 @@
 const colors: {
-    globaltext: string;
     primary: string;
     secondary: string;
     tertiary: string;
+    white: string,
 } = {
-    globaltext: '#4F311C',
-    primary: '#7ea2aa',
-    secondary: '#93ad18',
-    tertiary: '#586d04',
+    primary: 'purple',
+    secondary: '#ff7417',
+    tertiary: '#c5c6d0',
+    white: '#fff',
 };
 
 export default colors;

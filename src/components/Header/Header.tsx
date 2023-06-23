@@ -1,7 +1,31 @@
-import "./Header.css";
+import styled from "styled-components";
+import styleVar from "../../utils/style/style-variables";
+import colors from "../../utils/style/colors";
 import { Menubar } from "primereact/menubar";
 import { MenuItem } from "primereact/menuitem";
 import BoxImproLogo from "../../assets/boximpro-logo.png";
+
+const StyledNav = styled.nav`
+  width: ${styleVar.widthFull}%;
+  .p-menubar {
+    font-family: ${styleVar.fontFamily};
+    height: ${styleVar.heightFull}px;
+    background: ${colors.primary};
+    color: ${colors.white};
+    border: none;
+  }
+`;
+
+const StyledLogo = styled.img`
+  height: ${styleVar.heightFull}px;
+  margin-left: 40px;
+  margin-top: 16px;
+`;
+
+const StyledUl = styled.ul`
+  width: ${styleVar.widthFull}%;
+  margin-left: 20px;
+`;
 
 function Header(): JSX.Element {
   const navlist: MenuItem[] = [
@@ -30,13 +54,13 @@ function Header(): JSX.Element {
 
   return (
     <div>
-      <header>
-        <nav className='nav'>
-          <img src={BoxImproLogo} className='logo' />
-          <ul>
+      <header className='purple-white'>
+        <StyledNav className='flex'>
+          <StyledLogo src={BoxImproLogo} />
+          <StyledUl className='purple-white'>
             <Menubar model={navlist} />
-          </ul>
-        </nav>
+          </StyledUl>
+        </StyledNav>
       </header>
     </div>
   );
