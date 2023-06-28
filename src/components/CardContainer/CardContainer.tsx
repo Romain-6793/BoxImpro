@@ -8,6 +8,7 @@ import { specialists } from "../../data/specialists";
 import { exercices } from "../../data/exercices";
 
 const StyledDiv = styled.div`
+  margin-top: ${styleVar.marginTop}px;
   .p-card {
     font-family: ${styleVar.fontFamily};
     width: 75%;

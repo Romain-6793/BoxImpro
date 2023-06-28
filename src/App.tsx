@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import "primereact/resources/themes/vela-blue/theme.css";
+import "primereact/resources/themes/vela-purple/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import "./utils/style/Globalstyle.css";
