@@ -1,15 +1,9 @@
 import styled from "styled-components";
-import styleVar from "../../utils/style/style-variables";
-import colors from "../../utils/style/colors";
 import { useState } from "react";
 import { Dropdown } from "primereact/dropdown";
 
-const StyledDDContainer = styled.div`
-  .p-dropdown {
-    background: ${colors.white};
-    // color: ${colors.primary};
-    color: black;
-  }
+const StyledP = styled.p`
+  margin-top: 10px;
 `;
 
 const DropdownComponent = () => {
@@ -28,15 +22,15 @@ const DropdownComponent = () => {
 
   return (
     <div className='flex'>
-      <p>Trier par : </p>
-      <StyledDDContainer>
+      <StyledP>Trier par : </StyledP>
+      <div>
         <Dropdown
           value={selectedCity}
           onChange={(e) => setSelectedCity(e.value)}
           options={cities}
           placeholder='Select a City'
         />
-      </StyledDDContainer>
+      </div>
     </div>
   );
 };

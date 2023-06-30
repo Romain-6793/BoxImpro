@@ -3,6 +3,7 @@ import colors from "../../utils/style/colors";
 import styleVar from "../../utils/style/style-variables";
 import CardContainer from "../CardContainer/CardContainer";
 import DropdownComponent from "../Dropdown/Dropdown";
+import SearchBar from "../SearchBar/SearchBar";
 
 type PageProps = {
   subtitle: string;
@@ -23,9 +24,8 @@ const StyledSubtitle = styled.h2`
 
 const StyledSearchSection = styled.div`
   width: ${styleVar.widthFull}%;
-  height: ${styleVar.heightFull}px;
-  border: 1px solid black;
-  justify-content: space-between;
+  height: 50px;
+  justify-content: space-around;
 `;
 
 const PageContent: React.FunctionComponent<PageProps> = (props) => {
@@ -36,7 +36,8 @@ const PageContent: React.FunctionComponent<PageProps> = (props) => {
       <StyledTitle>Box Impro</StyledTitle>;
       <StyledSubtitle>{subtitle}</StyledSubtitle>
       <StyledSearchSection className='flex'>
-        <DropdownComponent></DropdownComponent>
+        <DropdownComponent />
+        <SearchBar />
       </StyledSearchSection>
       <CardContainer></CardContainer>
     </div>

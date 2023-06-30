@@ -30,7 +30,7 @@ const Home = (): JSX.Element => {
   return (
     <div className='flex-center'>
       <StyledHero className='flex-title'>
-        <StyledTitleDiv className='hero-text'>
+        <StyledTitleDiv>
           <StyledTitle>
             Ouvrez la boîte à idées de l'improvisateur !
           </StyledTitle>
