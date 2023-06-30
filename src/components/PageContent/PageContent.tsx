@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import colors from "../../utils/style/colors";
 import styleVar from "../../utils/style/style-variables";
-import CardContainer from "../CardContainer/CardContainer";
+import MainContent from "../MainContent/MainContent";
 import DropdownComponent from "../Dropdown/Dropdown";
 import SearchBar from "../SearchBar/SearchBar";
 
@@ -28,7 +28,7 @@ const StyledSearchSection = styled.div`
   justify-content: space-around;
 `;
 
-const PageContent: React.FunctionComponent<PageProps> = (props) => {
+const PageContent: React.FC<PageProps> = (props) => {
   const { subtitle } = props;
 
   return (
@@ -39,7 +39,7 @@ const PageContent: React.FunctionComponent<PageProps> = (props) => {
         <DropdownComponent />
         <SearchBar />
       </StyledSearchSection>
-      <CardContainer></CardContainer>
+      <MainContent></MainContent>
     </div>
   );
 };

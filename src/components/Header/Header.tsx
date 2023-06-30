@@ -11,12 +11,8 @@ const StyledNav = styled.nav`
     font-family: ${styleVar.fontFamily};
     height: ${styleVar.heightFull}px;
     background: ${colors.primary};
-    // color: ${colors.white};
     border: none;
   }
-  // .p-menu-list {
-  //   color: ${colors.white} !important;
-  // }
 `;
 
 const StyledLogo = styled.img`
