@@ -4,14 +4,10 @@ import Cards from "../Cards/Cards";
 import useUrl from "../../utils/hooks/useUrl";
 
 const CardContainer = () => {
-  
-  const currentURL = useUrl()
+  const currentURL = useUrl();
+  const data = currentURL.includes("exercices") ? exercices : specialists;
 
-  return currentURL.includes("exercices") ? (
-    <Cards data={exercices} />
-  ) : (
-    <Cards data={specialists} />
-  );
+  return <Cards data={data} />;
 };
 
 export default CardContainer;
