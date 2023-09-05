@@ -2,7 +2,7 @@ import styled from "styled-components";
 import colors from "../../utils/style/colors";
 import styleVar from "../../utils/style/style-variables";
 import MainContent from "../MainContent/MainContent";
-import DropdownComponent from "../Dropdown/Dropdown";
+import DropdownComponent from "../DropdownComponent/DropdownComponent";
 import SearchBar from "../SearchBar/SearchBar";
 
 type PageProps = {

@@ -17,3 +17,14 @@ export type Specialist = {
     duration: string;
     description: string;
 }
+
+type OptionsArray = {
+    label: string;
+    value: string;
+}
+
+export type DropdownItem = {
+    id: number;
+    title: string;
+    options: OptionsArray[];
+}
