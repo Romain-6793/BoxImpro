@@ -1,13 +1,9 @@
-import { specialists } from "../../data/specialists";
-import { exercices } from "../../data/exercices";
+
+import { MainProps } from "../../data/types";
 import Cards from "../Cards/Cards";
-import useUrl from "../../utils/hooks/useUrl";
 
-const CardContainer = () => {
-  const currentURL = useUrl();
-  const data = currentURL.includes("exercices") ? exercices : specialists;
-
+const MainContent: React.FC<MainProps> = ({data}) => {
   return <Cards data={data} />;
 };
 
-export default CardContainer;
+export default MainContent

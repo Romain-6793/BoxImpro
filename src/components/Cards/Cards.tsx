@@ -2,7 +2,7 @@ import styled from "styled-components"
 import styleVar from "../../utils/style/style-variables";
 import colors from "../../utils/style/colors";
 import { Card } from "primereact/card";
-import { Exercice, Specialist } from "../../data/types";
+import { Exercice, Specialist, CardsProps } from "../../data/types";
 import CardContent from "../CardContent/CardContent";
 
 const StyledMain = styled.main`
@@ -24,10 +24,6 @@ const StyledMain = styled.main`
     border-radius: ${styleVar.borderRadius}px;
   }
 `;
-
-type CardsProps = {
-  data: Exercice[] | Specialist[];
-}
 
 const Cards: React.FC<CardsProps> = ( {data} ) => {
     return (

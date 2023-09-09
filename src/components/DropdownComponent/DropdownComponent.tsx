@@ -1,22 +1,15 @@
 import styled from "styled-components";
 import { useState } from "react";
 import { Dropdown } from "primereact/dropdown";
-import { speDropdownData } from "./speDropdownData";
-import { exDropdownData } from "./exDropdownData";
-import { DropdownItem } from "../../data/types";
-import useUrl from "../../utils/hooks/useUrl";
+import { DropdownItem, DropdownProps } from "../../data/types";
 
 const StyledP = styled.p`
   margin-top: 10px;
 `;
 
-const DropdownComponent = () => {
+const DropdownComponent: React.FC<DropdownProps> = ({data}) => {
   const [selectedItem, setSelectedItem] = useState("");
-  const currentURL = useUrl();
-  const data = currentURL.includes("exercices")
-    ? exDropdownData
-    : speDropdownData;
-
+  
   return (
     <div className='flex'>
       <StyledP>Filtrer par : </StyledP>
@@ -27,7 +20,10 @@ const DropdownComponent = () => {
               key={item.id}
               value={selectedItem}
               onChange={(e) => {
-                setSelectedItem(e.value);
+                setSelectedItem(e.value),
+                console.log(selectedItem);
+                // createTag(e.value)
+                // En fait, il faut push mon nouveau tag, qui aura e.value dans un array géré par Redux
               }}
               options={item.options}
               placeholder={item.title}

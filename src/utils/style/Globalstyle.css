@@ -1,27 +1,26 @@
-
 .flex {
-    display: flex;
+  display: flex;
+  flex-flow: row wrap;
 }
 
 .flex-column {
-    display: flex;
-    flex-flow: column wrap;
-    align-items: center;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
 }
 
 .flex-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .flex-title {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .purple-white {
-    color: #fff;
-    background: purple;
-
+  color: #fff;
+  background: purple;
 }

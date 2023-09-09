@@ -1,14 +1,10 @@
 import styled from "styled-components";
-import { Exercice } from "../../data/types";
-import { Specialist } from "../../data/types";
+import { ObjectItemProps } from "../../data/types";
+
 
 const StyledProperty = styled.span`
   text-decoration: underline;
 `;
-
-type ObjectItemProps = {
-  [key: string]: Exercice | Specialist;
-};
 
 const CardContent: React.FC<ObjectItemProps> = ({ obj }) => {
   const getDisplayName = (key: string): string => {
