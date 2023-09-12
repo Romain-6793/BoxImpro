@@ -3,7 +3,7 @@ import styled from "styled-components";
 import colors from "../../utils/style/colors";
 import styleVar from "../../utils/style/style-variables";
 import useUrl from "../../utils/hooks/useUrl";
-import { RootState, PageProps } from "../../data/types";
+import { RootState, PageProps, State } from "../../data/types";
 import MainContent from "../MainContent/MainContent";
 import DropdownComponent from "../DropdownComponent/DropdownComponent";
 import SearchBar from "../SearchBar/SearchBar";
@@ -29,20 +29,23 @@ const StyledSearchSection = styled.div`
   margin-bottom: 50px;
 `;
 
-// type RootState = ReturnType<typeof store.getState>;
-
 const PageContent: React.FC<PageProps> = (props) => {
   const { subtitle } = props;
   const currentURL = useUrl();
-  const userState = useSelector((state : RootState) => state.userData);
+  const userState : State = useSelector((state : RootState) => state.userData) as State;
   const exercicesData = userState.exercicesData;
   const specialistsData = userState.specialistsData;
   const exercicesOptionsData = userState.exercicesOptionsData;
   const specialistsOptionsData = userState.specialistsOptionsData;
+  const exercicesTagsData = userState.exercicesTagsData;
+  const specialistsTagsData = userState.specialistsTagsData;
   const data = currentURL.includes("exercices") ? exercicesData : specialistsData;
   const dropdownData = currentURL.includes("exercices")
     ? exercicesOptionsData
     : specialistsOptionsData;
+  const tagData = currentURL.includes("exercices")
+    ? exercicesTagsData
+    : specialistsTagsData;
 
   return (
     <div className='flex-column'>
@@ -52,7 +55,7 @@ const PageContent: React.FC<PageProps> = (props) => {
         <DropdownComponent data={dropdownData} />
         <SearchBar />
       </StyledSearchSection>
-      <TagsSection data={dropdownData} />
+      <TagsSection data={tagData} />
       <MainContent data={data}></MainContent>
     </div>
   );
