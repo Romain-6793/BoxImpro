@@ -72,15 +72,14 @@ const dataSlice = createSlice({
             }
         },
         filterExercices(state) {
-          // const initialArray = [...state.exercicesData];
-          const initialArray = exercices
+          const initialArray = JSON.parse(JSON.stringify([...state.exercicesData]));
+          // const initialArray = exercices
           console.log(initialArray)
           console.log(exercices)
-          const tagsArray = [...state.exercicesTagsData]
+          const tagsArray = JSON.parse(JSON.stringify([...state.exercicesTagsData]))
           console.log(tagsArray)
 
           const cloneExercicesData = initialArray.filter((ex) => {
-            // Utilisez .some() pour vérifier si au moins un tag est inclus dans l'exercice
             return tagsArray.some((tag) => ex.toString().toLowerCase().includes(tag.value.toLowerCase()));
           });
 
