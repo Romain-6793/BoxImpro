@@ -33,6 +33,11 @@ export type DropdownItem = {
     options: Options[];
 }
 
+export type TagType = {
+  value: string,
+  id: string,
+}
+
 export type State = {
   exercicesData : Exercice[],
   specialistsData : Specialist[],
@@ -42,8 +47,8 @@ export type State = {
   filteredSpecialistsData : Specialist[],
   filteredExercicesOptionsData : DropdownItem[],
   filteredSpecialistsOptionsData : DropdownItem[],
-  exercicesTagsData : [] | string[],
-  specialistsTagsData : [] | string[],
+  exercicesTagsData : [] | TagType[],
+  specialistsTagsData : [] | TagType[],
 }
 
 // Props
@@ -57,7 +62,7 @@ export type DropdownProps = {
   }
 
 export type TagProps = {
-    data: string[];
+    data: TagType[];
   }
 
 export type CardsProps = {

@@ -2,6 +2,7 @@
 import { Exercice } from "./types"
 
 export const exercices: Exercice[] = [
+    
     {
         id: 6083279184,
         title: "Compter jusqu'à 20 en groupe",

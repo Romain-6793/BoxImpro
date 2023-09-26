@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux"
 import useUrl from "../../utils/hooks/useUrl";
-import { pushExerciceTag } from "../../slices/dataSlice";
+import { filterExercices, pushExerciceTag, pushSpecialistTag } from "../../slices/dataSlice";
 import { Dropdown } from "primereact/dropdown";
-import { DropdownItem, DropdownProps } from "../../data/types";
+import { DropdownItem, DropdownProps, TagType } from "../../data/types";
 
 const StyledP = styled.p`
   margin-top: 10px;
@@ -15,14 +15,26 @@ const DropdownComponent: React.FC<DropdownProps> = ({data}) => {
   const dispatch = useDispatch()
   const currentURL = useUrl()
 
-  const [selectedItem, setSelectedItem] = useState("");
-  console.log(selectedItem)
+  const [selectedItem, setSelectedItem] = useState<TagType>({
+    value: "",
+    id: ""
+  });
+
+  useEffect(() => {
+    // useEffect plays every time selectedItem is set
+    if (selectedItem) {
+      handleSelect();
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedItem]);
 
   const handleSelect = () => {
+    console.log(selectedItem)
     if (currentURL.includes("exercices")) {
       dispatch(pushExerciceTag(selectedItem))
+      dispatch(filterExercices())
     } else {
-      console.log("Cette fonctionnalité n'est pas encore au point...")
+      dispatch(pushSpecialistTag(selectedItem))
     }
   }
   
@@ -34,13 +46,13 @@ const DropdownComponent: React.FC<DropdownProps> = ({data}) => {
           data.map((item: DropdownItem) => (
             <Dropdown
               key={item.id}
-              value={selectedItem}
+              value={selectedItem.value}
               onChange={(e) => {
-                setSelectedItem(e.value),
-                handleSelect()
-                // console.log(selectedItem);
-                // createTag(e.value)
-                // En fait, il faut push mon nouveau tag, qui aura e.value dans un array géré par Redux
+                setSelectedItem(
+                  {
+                  value : e.value, 
+                  id : Math.floor(Math.random() * Math.floor(Math.random() * Date.now())).toString()
+                  })
               }}
               options={item.options}
               placeholder={item.title}
