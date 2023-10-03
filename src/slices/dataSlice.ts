@@ -117,9 +117,7 @@ const dataSlice = createSlice({
     },
     filteredExercicesSearch(state, action) {
 
-      // const initialArray = [...state.filteredExercicesData];
-      const initialArray = [...state.exercicesData];
-      // const resetArray = [...state.filteredExercicesData]
+      const initialArray = [...state.filteredExercicesData];
 
       const cloneExercicesArray = initialArray.filter((obj) => {
         return obj.title.toLowerCase().includes(action.payload.toLowerCase())
@@ -137,15 +135,13 @@ const dataSlice = createSlice({
         }
       } else {
         return {
-          ...state,
-          filteredExercicesData: initialArray,
+          ...initialState
         }
       }
     },
     filteredSpecialistsSearch(state, action) {
 
-      const initialArray = [...state.specialistsData];
-      // const resetArray = [...state.filteredSpecialistsData]
+      const initialArray = [...state.filteredSpecialistsData]
 
       const cloneSpecialistsArray = initialArray.filter((obj) => {
         return obj.title.toLowerCase().includes(action.payload.toLowerCase())
@@ -163,8 +159,7 @@ const dataSlice = createSlice({
         }
       } else {
         return {
-          ...state,
-          filteredSpecialistsData: initialArray,
+          ...initialState
         }
       }
     },
