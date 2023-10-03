@@ -33,8 +33,8 @@ const PageContent: React.FC<PageProps> = (props) => {
   const { subtitle } = props;
   const currentURL = useUrl();
   const userState : State = useSelector((state : RootState) => state.userData) as State;
-  const exercicesData = userState.exercicesData;
-  const specialistsData = userState.specialistsData;
+  const exercicesData = userState.filteredExercicesData;
+  const specialistsData = userState.filteredSpecialistsData;
   const exercicesOptionsData = userState.exercicesOptionsData;
   const specialistsOptionsData = userState.specialistsOptionsData;
   const exercicesTagsData = userState.exercicesTagsData;

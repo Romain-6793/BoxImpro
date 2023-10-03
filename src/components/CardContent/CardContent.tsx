@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { ObjectItemProps } from "../../data/types";
 
-
 const StyledProperty = styled.span`
   text-decoration: underline;
 `;
@@ -29,7 +28,7 @@ const CardContent: React.FC<ObjectItemProps> = ({ obj }) => {
   return (
     <div>
       {Object.entries(obj)
-        .filter(([key]) => key !== "id")
+        .filter(([key]) => key !== "id" && key !== "tags")
         .map(([key, value]) => {
           const displayName = getDisplayName(key);
           return (

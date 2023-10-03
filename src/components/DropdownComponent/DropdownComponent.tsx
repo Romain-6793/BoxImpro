@@ -1,43 +1,52 @@
 import styled from "styled-components";
-import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux"
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import useUrl from "../../utils/hooks/useUrl";
-import { filterExercices, pushExerciceTag, pushSpecialistTag } from "../../slices/dataSlice";
+import {
+  setSelectedItem,
+  filterExercices,
+  filterSpecialists,
+  pushExerciceTag,
+  pushSpecialistTag,
+} from "../../slices/dataSlice";
 import { Dropdown } from "primereact/dropdown";
-import { DropdownItem, DropdownProps, TagType } from "../../data/types";
+import {
+  RootState,
+  State,
+  DropdownItem,
+  DropdownProps,
+} from "../../data/types";
 
 const StyledP = styled.p`
   margin-top: 10px;
 `;
 
-const DropdownComponent: React.FC<DropdownProps> = ({data}) => {
-
-  const dispatch = useDispatch()
-  const currentURL = useUrl()
-
-  const [selectedItem, setSelectedItem] = useState<TagType>({
-    value: "",
-    id: ""
-  });
+const DropdownComponent: React.FC<DropdownProps> = ({ data }) => {
+  const userState: State = useSelector(
+    (state: RootState) => state.userData
+  ) as State;
+  const selectedItem = userState.selectedItem;
+  const dispatch = useDispatch();
+  const currentURL = useUrl();
 
   useEffect(() => {
     // useEffect plays every time selectedItem is set
-    if (selectedItem) {
+    if (selectedItem.id) {
       handleSelect();
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedItem]);
 
   const handleSelect = () => {
-    console.log(selectedItem)
     if (currentURL.includes("exercices")) {
-      dispatch(pushExerciceTag(selectedItem))
-      dispatch(filterExercices())
+      dispatch(pushExerciceTag(selectedItem));
+      dispatch(filterExercices());
     } else {
-      dispatch(pushSpecialistTag(selectedItem))
+      dispatch(pushSpecialistTag(selectedItem));
+      dispatch(filterSpecialists());
     }
-  }
-  
+  };
+
   return (
     <div className='flex'>
       <StyledP>Filtrer par : </StyledP>
@@ -47,12 +56,9 @@ const DropdownComponent: React.FC<DropdownProps> = ({data}) => {
             <Dropdown
               key={item.id}
               value={selectedItem.value}
-              onChange={(e) => {
-                setSelectedItem(
-                  {
-                  value : e.value, 
-                  id : Math.floor(Math.random() * Math.floor(Math.random() * Date.now())).toString()
-                  })
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              onChange={(e: any) => {
+                dispatch(setSelectedItem(e.value));
               }}
               options={item.options}
               placeholder={item.title}

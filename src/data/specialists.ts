@@ -4,6 +4,9 @@ import { Specialist } from "./types"
 export const specialists: Specialist[] = [
     {
         id: 767415032660,
+        tags: ["Contrainte de style", "Improvisation mixte", "Improvisation comparée", 
+        "Tous types d'improvisation", "En solo", "Petit nombre", "Grand nombre", 
+        "Tous nombres de joueurs", "Long"],
         title: "À la manière d'un auteur",
         specialistType: "Contrainte de style",
         improType: "mixte et comparée",
@@ -13,6 +16,9 @@ export const specialists: Specialist[] = [
     },
     {
         id: 342062505048,
+        tags: ["Contrainte de style", "Improvisation mixte", "Improvisation comparée", 
+        "Tous types d'improvisation", "En solo", "Petit nombre", "Grand nombre", 
+        "Tous nombres de joueurs", "Long"],
         title: "À la manière d'un genre",
         specialistType: "Contrainte de style",
         improType: "mixte et comparée",
@@ -21,7 +27,20 @@ export const specialists: Specialist[] = [
         description: "Les joueurs vont interpréter leur improvisation en s'inspirant d'un genre théâtral, cinématographique, télévisuel ou littéraire. Par exemple « à la manière d'une tragédie grecque, le la comedia dell arte, du théâtre de boulevard  », « à la manière d'une comédie romantique, d'un western, d'un film de science fiction », « à la manière d'un jeu télévisé, d'un documentaire, d'une sitcom », « à la manière d'un roman policier, d'un roman biographique, d'une fresque historique ». L'idée est de reprendre les codes du genre imposé.",
     },
     {
+        id: 342062505049,
+        tags: ["Contrainte de style", "Improvisation mixte", "Improvisation comparée", 
+        "Tous types d'improvisation", "En solo", "Petit nombre", "Grand nombre", 
+        "Tous nombres de joueurs", "Court"],
+        title: "Catégorie test",
+        specialistType: "Contrainte de style",
+        improType: "mixte et comparée",
+        numberOfPlayers: "1 joueur",
+        duration: "1 minute",
+        description: "Les joueurs vont interpréter leur improvisation en s'inspirant d'un genre théâtral, cinématographique, télévisuel ou littéraire. Par exemple « à la manière d'une tragédie grecque, le la comedia dell arte, du théâtre de boulevard  », « à la manière d'une comédie romantique, d'un western, d'un film de science fiction », « à la manière d'un jeu télévisé, d'un documentaire, d'une sitcom », « à la manière d'un roman policier, d'un roman biographique, d'une fresque historique ». L'idée est de reprendre les codes du genre imposé.",
+    },
+    {
         id: 490642127051,
+        tags: ["Contrainte de style", "Improvisation comparée", "Petit nombre", "Grand nombre", "Long"],
         title: "Comédie musicale",
         specialistType: "Contrainte de style",
         improType: "comparée",
@@ -31,6 +50,8 @@ export const specialists: Specialist[] = [
     },
     {
         id: 261942527364,
+        tags: ["Contrainte d'expression orale", "Improvisation mixte", "Improvisation comparée", 
+        "Tous types d'improvisation", "Petit nombre", "Court"],
         title: "Rimée",
         specialistType: "Contrainte d'expression orale",
         improType: "mixte et comparée",
@@ -40,6 +61,8 @@ export const specialists: Specialist[] = [
     },
     {
         id: 138987931562,
+        tags: ["Contrainte d'expression orale", "Improvisation mixte", "Improvisation comparée", 
+        "Tous types d'improvisation", "Petit nombre", "Court"],
         title: "Chantée",
         specialistType: "Contrainte d'expression orale",
         improType: "mixte et comparée",
@@ -49,6 +72,7 @@ export const specialists: Specialist[] = [
     },
     {
         id: 74461413961,
+        tags: ["Contrainte d'expression orale", "Improvisation comparée", "Petit nombre", "Court"],
         title: "Mimée / Muette",
         specialistType: "Contrainte d'expression orale",
         improType: "comparée.",
@@ -58,6 +82,7 @@ export const specialists: Specialist[] = [
     },
     {
         id: 719651322987,
+        tags: ["Contraintes diverses", "Improvisation mixte", "Petit nombre", "Court"],
         title: "Croisement",
         specialistType: "Contraintes diverses",
         improType: "mixte uniquement",
@@ -67,6 +92,7 @@ export const specialists: Specialist[] = [
     },
     {
         id: 375638982050,
+        tags: ["Contrainte de structure", "Improvisation comparée", "Grand nombre", "Court"],
         title: "Poursuite",
         specialistType: "Contrainte de structure",
         improType: "comparée uniquement",
@@ -76,6 +102,7 @@ export const specialists: Specialist[] = [
     },
     {
         id: 88466199552,
+        tags: ["Contrainte de structure", "Improvisation comparée", "Grand nombre", "Court"],
         title: "Double Poursuite",
         specialistType: "Contrainte de structure",
         improType: "comparée uniquement",
@@ -85,6 +112,7 @@ export const specialists: Specialist[] = [
     },
     {
         id: 321384998131,
+        tags: ["Contraintes diverses", "Improvisation mixte", "Improvisation comparée", "Tous types d'improvisation", "Petit nombre", "Court"],
         title: "Musicale",
         specialistType: "Contraintes diverses",
         improType: "mixte et comparée",
@@ -94,6 +122,7 @@ export const specialists: Specialist[] = [
     },
     {
         id: 31708866390,
+        tags: ["Contraintes diverses", "Improvisation mixte", "Improvisation comparée", "Tous types d'improvisation", "Petit nombre", "Court"],
         title: "Objet détourné / Accessoire",
         specialistType: "Contraintes diverses",
         improType: "mixte et comparée",

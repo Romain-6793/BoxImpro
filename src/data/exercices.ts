@@ -5,6 +5,7 @@ export const exercices: Exercice[] = [
     
     {
         id: 6083279184,
+        tags: ["Écoute collective"],
         title: "Compter jusqu'à 20 en groupe",
         type: "Écoute collective",
         interest: "Recentrer le groupe, développer l'écoute et la cohésion de groupe.",
@@ -14,6 +15,7 @@ export const exercices: Exercice[] = [
     },
     {
         id: 1118635757686,
+        tags: ["Confiance"],
         title: "Traverser la salle en aveugle",
         type: "Confiance",
         interest: "Développer pour chacun la confiance en soi. Développer la sensation de l'espace.",
@@ -23,6 +25,7 @@ export const exercices: Exercice[] = [
     },
     {
         id: 88346512070,
+        tags: ["Écoute collective"],
         title: "Je m'assieds, tu te lèves",
         type: "Écoute collective",
         interest: "Un exercice difficile mais puissant pour développer une écoute de groupe de qualité.",
@@ -32,6 +35,7 @@ export const exercices: Exercice[] = [
     },
     {
         id: 953349055791,
+        tags: ["Imaginaire verbal"],
         title: "Associations d'idées",
         type: "Imaginaire verbal",
         interest: "Exercice de base pour stimuler la créativité verbale, prendre confiance dans son imaginaire. Prépare à l'exercice dissociations d'idées». Peut encourager à développer son vocabulaire. Exercice dynamisant.",
@@ -41,6 +45,7 @@ export const exercices: Exercice[] = [
     },
     {
         id: 479145570659,
+        tags: ["Imaginaire corporel"],
         title: "Mime de films",
         type: "Imaginaire corporel",
         interest: "Savoir raconter une histoire avec le corps.",
@@ -50,6 +55,7 @@ export const exercices: Exercice[] = [
     },
     {
         id: 7098513482,
+        tags: ["Travail du regard"],
         title: "Seul face aux autres",
         type: "Travail du regard",
         interest: "Accepter le regard des autres et regarder vraiment et individuellement chaque personne du groupe. Aiguiser sa notion du temps.",
@@ -59,6 +65,7 @@ export const exercices: Exercice[] = [
     },
     {
         id: 1287600537838,
+        tags: ["Gestion de l'espace"],
         title: "Déambulation consciente",
         type: "Gestion de l'espace",
         interest: "Être à l'écoute de son corps et de celui des autres ainsi que de la dynamique rythmique.",
@@ -68,6 +75,7 @@ export const exercices: Exercice[] = [
     },
     {
         id: 539885626108,
+        tags: ["Conscience du temps"],
         title: "La minute",
         type: "Conscience du temps",
         interest: "Jouer tout en ayant conscience du temps qui passe. Prendre en compte plusieurs paramètres sur le plateau.",
@@ -77,6 +85,7 @@ export const exercices: Exercice[] = [
     },
     {
         id: 70503580110,
+        tags: ["Conscience du temps."],
         title: "Plus près de toi mon deux",
         type: "Conscience du temps.",
         interest: "Jouer tout en ayant conscience du temps qui passe. Prendre en compte plusieurs paramètres sur le plateau. Jouer sur plusieurs tableaux.",
@@ -86,6 +95,7 @@ export const exercices: Exercice[] = [
     },
     {
         id: 167538547479,
+        tags: ["Imaginaire corporel"],
         title: "Le sculpteur",
         type: "Imaginaire corporel",
         interest: "Amener les participants à dissocier les parties de leurs corps, et à les diriger. Développer ainsi chez eux la conscience et la maîtrise des parties de leur corps.",

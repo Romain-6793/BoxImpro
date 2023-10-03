@@ -3,34 +3,36 @@ import store from "../utils/store";
 export type RootState = ReturnType<typeof store.getState>;
 
 export type Exercice = {
-    id: number;
-    title: string;
-    type: string;
-    interest: string;
-    description: string;
-    advices: string;
-    variants: string;
+  tags?: string[];
+  id: number;
+  title: string;
+  type: string;
+  interest: string;
+  description: string;
+  advices: string;
+  variants: string;
 }
 
 export type Specialist = {
-    id: number;
-    title: string;
-    specialistType: string;
-    improType: string;
-    numberOfPlayers: string;
-    duration: string;
-    description: string;
+  tags?: string[];
+  id: number;
+  title: string;
+  specialistType: string;
+  improType: string;
+  numberOfPlayers: string;
+  duration: string;
+  description: string;
 }
 
 export type Options = {
-    label: string;
-    value: string;
+  label: string;
+  value: string;
 }
 
 export type DropdownItem = {
-    id: number;
-    title: string;
-    options: Options[];
+  id: number;
+  title: string;
+  options: Options[];
 }
 
 export type TagType = {
@@ -39,40 +41,39 @@ export type TagType = {
 }
 
 export type State = {
-  exercicesData : Exercice[],
-  specialistsData : Specialist[],
-  exercicesOptionsData : DropdownItem[],
-  specialistsOptionsData : DropdownItem[],
-  filteredExercicesData : Exercice[],
-  filteredSpecialistsData : Specialist[],
-  filteredExercicesOptionsData : DropdownItem[],
-  filteredSpecialistsOptionsData : DropdownItem[],
-  exercicesTagsData : [] | TagType[],
-  specialistsTagsData : [] | TagType[],
+  exercicesData: Exercice[],
+  specialistsData: Specialist[],
+  exercicesOptionsData: DropdownItem[],
+  specialistsOptionsData: DropdownItem[],
+  filteredExercicesData: Exercice[],
+  filteredSpecialistsData: Specialist[],
+  exercicesTagsData: [] | TagType[],
+  specialistsTagsData: [] | TagType[],
+  selectedItem: TagType,
 }
 
 // Props
 
 export type PageProps = {
-    subtitle: string;
-  };
+  subtitle: string;
+};
 
 export type DropdownProps = {
-    data: DropdownItem[];
-  }
+  data: DropdownItem[];
+}
 
 export type TagProps = {
-    data: TagType[];
-  }
+  data: TagType[];
+}
 
 export type CardsProps = {
-    data: Exercice[] | Specialist[];
-  }
+  data: Exercice[] | Specialist[];
+}
 
 export type ObjectItemProps = {
-    [key: string]: Exercice | Specialist;
-  };
+  [key: string]: Exercice | Specialist;
+};
 
 export type MainProps = {
-    data: Exercice[] | Specialist[];
-  }
+  data: Exercice[] | Specialist[];
+}
