@@ -1,5 +1,4 @@
 import styled from "styled-components";
-// import colors from "../../utils/style/colors";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import useUrl from "../../utils/hooks/useUrl";
@@ -18,6 +17,9 @@ const StyledSpan = styled.span`
 `;
 
 const TagsSection: React.FC<TagProps> = ({ data }) => {
+  // Unlike in dropdown component, I call useState here because I don't need to have access to global
+  // state since the value and id of my item (tag) are already defined.
+
   const [selectedItem, setSelectedItem] = useState({
     value: "",
     id: "",
@@ -25,7 +27,7 @@ const TagsSection: React.FC<TagProps> = ({ data }) => {
 
   useEffect(() => {
     // useEffect plays every time selectedItem is set
-    if (selectedItem) {
+    if (selectedItem.id) {
       handleCloseTag();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -33,6 +35,11 @@ const TagsSection: React.FC<TagProps> = ({ data }) => {
 
   const dispatch = useDispatch();
   const currentURL = useUrl();
+
+  // handleCloseTag is called every time a selected item is identified (useEffect) i.e. every time I click
+  // on my "close" icon of any tag. From there, I can remove the specific tag from my tag array
+  // and re-dispatch my filter on data depending on the URL, then I can reset selectedItem on my global
+  // state, so I can use again the change event on any of my dropdowns.
 
   const handleCloseTag = () => {
     if (currentURL.includes("exercices")) {
@@ -49,8 +56,7 @@ const TagsSection: React.FC<TagProps> = ({ data }) => {
   return (
     <div className='flex'>
       {data.map((item: TagType) => (
-        //Revoir façon de faire le style
-        <Tag style={{ background: "#ff7417" }} key={item.id}>
+        <Tag key={item.id}>
           <div className='flex align-items-center gap-2'>
             <StyledSpan className='text-base'>{item.value}</StyledSpan>
             <i

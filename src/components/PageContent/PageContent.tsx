@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux"
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import colors from "../../utils/style/colors";
 import styleVar from "../../utils/style/style-variables";
@@ -29,17 +29,24 @@ const StyledSearchSection = styled.div`
   margin-bottom: 50px;
 `;
 
-const PageContent: React.FC<PageProps> = (props) => {
-  const { subtitle } = props;
+// PageContent is my central component, I call a useSelector to have access to my global state.
+// From there I recover all the data I need (list of objects, of dropdowns, of tags). Then my data
+// will display depending on the URL (exercices or specialists page) as well as my subtitle.
+
+const PageContent: React.FC<PageProps> = ({ subtitle }) => {
   const currentURL = useUrl();
-  const userState : State = useSelector((state : RootState) => state.userData) as State;
+  const userState: State = useSelector(
+    (state: RootState) => state.userData
+  ) as State;
   const exercicesData = userState.filteredExercicesData;
   const specialistsData = userState.filteredSpecialistsData;
   const exercicesOptionsData = userState.exercicesOptionsData;
   const specialistsOptionsData = userState.specialistsOptionsData;
   const exercicesTagsData = userState.exercicesTagsData;
   const specialistsTagsData = userState.specialistsTagsData;
-  const data = currentURL.includes("exercices") ? exercicesData : specialistsData;
+  const data = currentURL.includes("exercices")
+    ? exercicesData
+    : specialistsData;
   const dropdownData = currentURL.includes("exercices")
     ? exercicesOptionsData
     : specialistsOptionsData;

@@ -1,5 +1,7 @@
 import store from "../utils/store";
 
+// Here is the file where I define every type I use for Typescript.
+
 export type RootState = ReturnType<typeof store.getState>;
 
 export type Exercice = {

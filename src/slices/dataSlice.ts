@@ -117,7 +117,19 @@ const dataSlice = createSlice({
     },
     filteredExercicesSearch(state, action) {
 
-      const initialArray = [...state.filteredExercicesData];
+      const tagsArray: string[] = state.exercicesTagsData.map((item) => item.value);
+
+      const initialArray = state.exercicesData.filter((ex: Exercice) => {
+
+        const exTags = ex.tags;
+
+        if (exTags) {
+          return tagsArray.every((tag: string) => exTags.includes(tag))
+        } else {
+          return
+        }
+      });
+      console.log(initialArray)
 
       const cloneExercicesArray = initialArray.filter((obj) => {
         return obj.title.toLowerCase().includes(action.payload.toLowerCase())
@@ -135,7 +147,8 @@ const dataSlice = createSlice({
         }
       } else {
         return {
-          ...initialState
+          ...state,
+          filteredExercicesData: initialArray,
         }
       }
     },

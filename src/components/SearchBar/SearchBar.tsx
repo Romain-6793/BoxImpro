@@ -6,11 +6,14 @@ import {
   filteredSpecialistsSearch,
 } from "../../slices/dataSlice";
 
+// The main Searchbar to display data depending on what you type
+
 const SearchBar = () => {
   const currentURL = useUrl();
   const dispatch = useDispatch();
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleSearch = (e: any) => {
+    // The action called depends on the URL, i.e. the active page
     if (currentURL.includes("exercices")) {
       dispatch(filteredExercicesSearch(e.target.value));
     } else {

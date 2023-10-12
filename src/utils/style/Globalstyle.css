@@ -1,3 +1,5 @@
+/* I use this CSS file to have formatted classNames for my components. */
+
 .flex {
   display: flex;
   flex-flow: row wrap;

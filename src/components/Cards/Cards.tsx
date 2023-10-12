@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 import styleVar from "../../utils/style/style-variables";
 import colors from "../../utils/style/colors";
 import { Card } from "primereact/card";
@@ -25,19 +25,20 @@ const StyledMain = styled.main`
   }
 `;
 
-const Cards: React.FC<CardsProps> = ( {data} ) => {
-    return (
-        <StyledMain className="flex-column">
-       {data &&
+// In the return of my component a data item can be either of type Exercice or Specialist.
+// I pass the item in the obj prop of my CardContent.
+
+const Cards: React.FC<CardsProps> = ({ data }) => {
+  return (
+    <StyledMain className='flex-column'>
+      {data &&
         data.map((item: Exercice | Specialist) => (
           <Card title={item.title} key={item.id}>
             <CardContent obj={item} />
           </Card>
         ))}
-        
-        </StyledMain>
+    </StyledMain>
+  );
+};
 
-    ) 
-}
-
-export default Cards
+export default Cards;

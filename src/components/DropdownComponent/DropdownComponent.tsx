@@ -22,6 +22,8 @@ const StyledP = styled.p`
 `;
 
 const DropdownComponent: React.FC<DropdownProps> = ({ data }) => {
+  // Here, I call a useSelector to have access to my global state, and more precisely, to SelectedItem
+
   const userState: State = useSelector(
     (state: RootState) => state.userData
   ) as State;
@@ -30,7 +32,7 @@ const DropdownComponent: React.FC<DropdownProps> = ({ data }) => {
   const currentURL = useUrl();
 
   useEffect(() => {
-    // useEffect plays every time selectedItem is set
+    // useEffect plays every time selectedItem is set to call handleSelect
     if (selectedItem.id) {
       handleSelect();
     }
@@ -38,6 +40,7 @@ const DropdownComponent: React.FC<DropdownProps> = ({ data }) => {
   }, [selectedItem]);
 
   const handleSelect = () => {
+    // The action called depends on the URL, i.e. the active page
     if (currentURL.includes("exercices")) {
       dispatch(pushExerciceTag(selectedItem));
       dispatch(filterExercices());
@@ -46,6 +49,9 @@ const DropdownComponent: React.FC<DropdownProps> = ({ data }) => {
       dispatch(filterSpecialists());
     }
   };
+
+  // The map below will act on the DropdownData (see PageContent), it will render every dropdown to
+  // have a filtering sort when you click on any option.
 
   return (
     <div className='flex'>
