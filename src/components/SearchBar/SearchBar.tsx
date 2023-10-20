@@ -14,11 +14,16 @@ const SearchBar = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleSearch = (e: any) => {
     // The action called depends on the URL, i.e. the active page
-    if (currentURL.includes("exercices")) {
-      dispatch(filteredExercicesSearch(e.target.value));
-    } else {
-      dispatch(filteredSpecialistsSearch(e.target.value));
-    }
+
+    const action = currentURL.includes("exercices")
+      ? () => {
+          dispatch(filteredExercicesSearch(e.target.value));
+        }
+      : () => {
+          dispatch(filteredSpecialistsSearch(e.target.value));
+        };
+
+    action();
   };
   return (
     <div>

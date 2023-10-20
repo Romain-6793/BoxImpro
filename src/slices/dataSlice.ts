@@ -2,6 +2,8 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { Exercice, Specialist, State, TagType } from '../data/types'
 import { exercices } from '../data/exercices'
 import { specialists } from '../data/specialists'
+import { filterBySearch } from '../utils/functions/filterBySearch'
+import { generateID } from '../utils/functions/generateID'
 import { exerciceDropdownData } from '../data/exerciceDropdownData'
 import { specialistDropdownData } from '../data/specialistDropdownData'
 
@@ -26,14 +28,12 @@ const dataSlice = createSlice({
   initialState,
   reducers: {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    setSelectedItem: (state, action: any) => {
+    setSelectedItem: (state, action: PayloadAction<string>) => {
       if (action.payload) {
         return {
           ...state,
           selectedItem: {
-            id: Math.floor(
-              Math.random() * Math.floor(Math.random() * Date.now())
-            ).toString(),
+            id: generateID(),
             value: action.payload
           },
         };
@@ -79,17 +79,17 @@ const dataSlice = createSlice({
       }
     },
     filterExercices(state) {
-      const tagsArray: string[] = state.exercicesTagsData.map((item) => item.value);
+      const tagValuesArray: string[] = state.exercicesTagsData.map((item) => item.value);
 
       const cloneExercicesData = state.exercicesData.filter((ex: Exercice) => {
 
         const exTags = ex.tags;
 
         if (exTags) {
-          return tagsArray.every((tag: string) => exTags.includes(tag))
-        } else {
-          return
+          return tagValuesArray.every((tag: string) => exTags.includes(tag))
         }
+
+        return
       });
       return {
         ...state,
@@ -97,17 +97,18 @@ const dataSlice = createSlice({
       }
     },
     filterSpecialists(state) {
-      const tagsArray: string[] = state.specialistsTagsData.map((item) => item.value);
+      const tagValuesArray: string[] = state.specialistsTagsData.map((item) => item.value);
 
       const cloneSpecialistsData = state.specialistsData.filter((spe: Specialist) => {
 
         const speTags = spe.tags;
 
         if (speTags) {
-          return tagsArray.every((tag: string) => speTags.includes(tag))
-        } else {
-          return
+          return tagValuesArray.every((tag: string) => speTags.includes(tag))
         }
+
+        return
+
       });
 
       return {
@@ -115,65 +116,57 @@ const dataSlice = createSlice({
         filteredSpecialistsData: cloneSpecialistsData
       }
     },
-    filteredExercicesSearch(state, action) {
+    filteredExercicesSearch(state, action: { payload: string }) {
 
-      const tagsArray: string[] = state.exercicesTagsData.map((item) => item.value);
+      const tagValuesArray: string[] = state.exercicesTagsData.map((item) => item.value);
 
-      const initialArray = state.exercicesData.filter((ex: Exercice) => {
+      const initialArray: Exercice[] = state.exercicesData.filter((ex: Exercice) => {
 
         const exTags = ex.tags;
 
         if (exTags) {
-          return tagsArray.every((tag: string) => exTags.includes(tag))
-        } else {
-          return
+          return tagValuesArray.every((tag: string) => exTags.includes(tag))
         }
+
+        return initialArray
+
       });
-      console.log(initialArray)
 
-      const cloneExercicesArray = initialArray.filter((obj) => {
-        return obj.title.toLowerCase().includes(action.payload.toLowerCase())
-          || obj.type.includes(action.payload)
-          || obj.interest.toLowerCase().includes(action.payload.toLowerCase())
-          || obj.description.includes(action.payload)
-          || obj.advices.toLowerCase().includes(action.payload.toLowerCase())
-          || obj.variants.toLowerCase().includes(action.payload.toLowerCase())
-      })
+      const cloneExercicesArray: Exercice[] = filterBySearch(action.payload, initialArray)
 
-      if (action.payload) {
-        return {
-          ...state,
-          filteredExercicesData: cloneExercicesArray,
-        }
-      } else {
-        return {
-          ...state,
-          filteredExercicesData: initialArray,
-        }
+      return action.payload ? {
+        ...state,
+        filteredExercicesData: cloneExercicesArray,
+      } : {
+        ...state,
+        filteredExercicesData: initialArray,
       }
+
     },
-    filteredSpecialistsSearch(state, action) {
+    filteredSpecialistsSearch(state, action: { payload: string }) {
 
-      const initialArray = [...state.filteredSpecialistsData]
+      const tagValuesArray: string[] = state.specialistsTagsData.map((item) => item.value);
 
-      const cloneSpecialistsArray = initialArray.filter((obj) => {
-        return obj.title.toLowerCase().includes(action.payload.toLowerCase())
-          || obj.specialistType.includes(action.payload)
-          || obj.improType.toLowerCase().includes(action.payload.toLowerCase())
-          || obj.numberOfPlayers.includes(action.payload)
-          || obj.duration.toLowerCase().includes(action.payload.toLowerCase())
-          || obj.description.toLowerCase().includes(action.payload.toLowerCase())
-      })
+      const initialArray: Specialist[] = state.specialistsData.filter((spe: Specialist) => {
 
-      if (action.payload) {
-        return {
-          ...state,
-          filteredSpecialistsData: cloneSpecialistsArray,
+        const speTags = spe.tags;
+
+        if (speTags) {
+          return tagValuesArray.every((tag: string) => speTags.includes(tag))
         }
-      } else {
-        return {
-          ...initialState
-        }
+
+        return initialArray
+
+      });
+
+      const cloneSpecialistsArray: Specialist[] = filterBySearch(action.payload, initialArray)
+
+      return action.payload ? {
+        ...state,
+        filteredSpecialistsData: cloneSpecialistsArray,
+      } : {
+        ...state,
+        filteredSpecialistsData: initialArray,
       }
     },
   }

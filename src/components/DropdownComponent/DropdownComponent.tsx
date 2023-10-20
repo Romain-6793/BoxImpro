@@ -39,15 +39,25 @@ const DropdownComponent: React.FC<DropdownProps> = ({ data }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedItem]);
 
+  const handleChange = (value: string) => {
+    dispatch(setSelectedItem(value));
+    console.log(selectedItem);
+  };
+
   const handleSelect = () => {
     // The action called depends on the URL, i.e. the active page
-    if (currentURL.includes("exercices")) {
-      dispatch(pushExerciceTag(selectedItem));
-      dispatch(filterExercices());
-    } else {
-      dispatch(pushSpecialistTag(selectedItem));
-      dispatch(filterSpecialists());
-    }
+
+    const action = currentURL.includes("exercices")
+      ? () => {
+          dispatch(pushExerciceTag(selectedItem));
+          dispatch(filterExercices(null));
+        }
+      : () => {
+          dispatch(pushSpecialistTag(selectedItem));
+          dispatch(filterSpecialists(null));
+        };
+
+    action();
   };
 
   // The map below will act on the DropdownData (see PageContent), it will render every dropdown to
@@ -64,7 +74,7 @@ const DropdownComponent: React.FC<DropdownProps> = ({ data }) => {
               value={selectedItem.value}
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
               onChange={(e: any) => {
-                dispatch(setSelectedItem(e.value));
+                handleChange(e.value);
               }}
               options={item.options}
               placeholder={item.title}

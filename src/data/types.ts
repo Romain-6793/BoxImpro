@@ -13,6 +13,7 @@ export type Exercice = {
   description: string;
   advices: string;
   variants: string;
+  likes: number;
 }
 
 export type Specialist = {
@@ -24,6 +25,7 @@ export type Specialist = {
   numberOfPlayers: string;
   duration: string;
   description: string;
+  likes: number;
 }
 
 export type Options = {

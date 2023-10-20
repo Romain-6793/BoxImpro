@@ -42,15 +42,19 @@ const TagsSection: React.FC<TagProps> = ({ data }) => {
   // state, so I can use again the change event on any of my dropdowns.
 
   const handleCloseTag = () => {
-    if (currentURL.includes("exercices")) {
-      dispatch(removeExerciceTag(selectedItem));
-      dispatch(filterExercices());
-      dispatch(resetSelectedItem());
-    } else {
-      dispatch(removeSpecialistTag(selectedItem));
-      dispatch(filterSpecialists());
-      dispatch(resetSelectedItem());
-    }
+    const action = currentURL.includes("exercices")
+      ? () => {
+          dispatch(removeExerciceTag(selectedItem));
+          dispatch(filterExercices(null));
+          dispatch(resetSelectedItem(null));
+        }
+      : () => {
+          dispatch(removeSpecialistTag(selectedItem));
+          dispatch(filterSpecialists(null));
+          dispatch(resetSelectedItem(null));
+        };
+
+    action();
   };
 
   return (

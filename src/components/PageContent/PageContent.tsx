@@ -38,15 +38,19 @@ const PageContent: React.FC<PageProps> = ({ subtitle }) => {
   const userState: State = useSelector(
     (state: RootState) => state.userData
   ) as State;
-  const exercicesData = userState.filteredExercicesData;
-  const specialistsData = userState.filteredSpecialistsData;
-  const exercicesOptionsData = userState.exercicesOptionsData;
-  const specialistsOptionsData = userState.specialistsOptionsData;
-  const exercicesTagsData = userState.exercicesTagsData;
-  const specialistsTagsData = userState.specialistsTagsData;
+
+  const {
+    filteredExercicesData,
+    filteredSpecialistsData,
+    exercicesOptionsData,
+    specialistsOptionsData,
+    exercicesTagsData,
+    specialistsTagsData,
+  } = userState;
+
   const data = currentURL.includes("exercices")
-    ? exercicesData
-    : specialistsData;
+    ? filteredExercicesData
+    : filteredSpecialistsData;
   const dropdownData = currentURL.includes("exercices")
     ? exercicesOptionsData
     : specialistsOptionsData;
