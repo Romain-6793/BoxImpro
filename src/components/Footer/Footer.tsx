@@ -5,7 +5,7 @@ import classnames from "classnames";
 const StyledFooter = styled.footer`
   width: ${styleVar.widthFull}%;
   height: ${styleVar.heightFull}px;
-  margin-top: ${styleVar.marginTop}px;
+  margin-top: ${styleVar.margin}px;
 `;
 
 function Footer(): JSX.Element {

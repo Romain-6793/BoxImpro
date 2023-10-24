@@ -6,7 +6,7 @@ import { Exercice, Specialist, CardsProps } from "../../data/types";
 import CardContent from "../CardContent/CardContent";
 
 const StyledMain = styled.main`
-  margin-top: ${styleVar.marginTop}px;
+  margin-top: ${styleVar.margin}px;
   .p-card {
     font-family: ${styleVar.fontFamily};
     width: 75%;

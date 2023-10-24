@@ -24,9 +24,9 @@ const StyledSubtitle = styled.h2`
 
 const StyledSearchSection = styled.div`
   width: ${styleVar.widthFull}%;
-  height: 50px;
+  height: ${styleVar.height}px;
   justify-content: space-around;
-  margin-bottom: 50px;
+  margin-bottom: ${styleVar.margin}px;
 `;
 
 // PageContent is my central component, I call a useSelector to have access to my global state.
