@@ -50,11 +50,11 @@ const DropdownComponent: React.FC<DropdownProps> = ({ data }) => {
     const action = currentURL.includes("exercices")
       ? () => {
           dispatch(pushExerciceTag(selectedItem));
-          dispatch(filterExercices(null));
+          dispatch(filterExercices());
         }
       : () => {
           dispatch(pushSpecialistTag(selectedItem));
-          dispatch(filterSpecialists(null));
+          dispatch(filterSpecialists());
         };
 
     action();

@@ -2,7 +2,7 @@ import { Exercice, Specialist } from "../../data/types";
 
 // My filter algorithm for the searchbar.
 
-export const filterBySearch = (input: string, data: Exercice[] | Specialist[]) => {
+export const filterBySearch = (input: string, data: (Exercice | Specialist)[]): (Exercice | Specialist)[] => {
     const lowercaseInput = input.toLowerCase();
 
     const eachObject = data.map((obj) => obj)

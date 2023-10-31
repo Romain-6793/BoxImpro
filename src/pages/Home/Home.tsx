@@ -4,7 +4,7 @@ import styleVar from "../../utils/style/style-variables";
 
 const StyledHero = styled.div`
   width: 75%;
-  margin-top: ${styleVar.marginTop}px;
+  margin-top: ${styleVar.margin}px;
   border-radius: ${styleVar.borderRadius}px;
   position: relative;
 `;
@@ -14,10 +14,59 @@ const StyledTitleDiv = styled.div`
   left: 5%;
   color: orange;
   text-align: center;
+  @media (max-width: 2000px) {
+    left: 10%;
+  }
+  @media (max-width: 1801px) {
+    left: 5%;
+  }
+  @media (max-width: 1276px) {
+    left: 3%;
+  }
+  @media (max-width: 975px) {
+    top: 5%;
+    left: 15%;
+  }
+  @media (max-width: 851px) {
+    left: 10%;
+  }
+  @media (max-width: 766px) {
+    left: 15%;
+  }
+  @media (max-width: 621px) {
+    left: 10%;
+  }
+  @media (max-width: 550px) {
+    left: 5%;
+  }
 `;
 
 const StyledTitle = styled.h1`
   font-family: ${styleVar.titleFontFamily};
+  @media (max-width: 1651px) {
+    font-size: 46px;
+  }
+  @media (max-width: 1451px) {
+    font-size: 42px;
+  }
+  @media (max-width: 1351px) {
+    font-size: 40px;
+  }
+  @media (max-width: 975px) {
+    font-size: 20px;
+  }
+  @media (max-width: 767px) {
+    font-size: 15px;
+  }
+`;
+
+const StyledSubTitle = styled.h2`
+  @media (max-width: 975px) {
+    font-size: 18px;
+  }
+  @media (max-width: 767px) {
+    font-size: 13px;
+  }
 `;
 
 const StyledBackground = styled.img`
@@ -34,9 +83,9 @@ const Home = (): JSX.Element => {
           <StyledTitle>
             Ouvrez la boîte à idées de l'improvisateur !
           </StyledTitle>
-          <h2>
+          <StyledSubTitle>
             Des dizaines d'exercices et de catégories à votre disposition.
-          </h2>
+          </StyledSubTitle>
         </StyledTitleDiv>
         <StyledBackground src={BoxImproBg} />
       </StyledHero>

@@ -22,7 +22,7 @@ const StyledLogo = styled.img`
 `;
 
 const StyledUl = styled.ul`
-  width: ${styleVar.widthFull}%;
+  width: 50%;
   margin-left: 20px;
 `;
 

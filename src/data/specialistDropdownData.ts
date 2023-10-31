@@ -42,13 +42,13 @@ export const specialistDropdownData: DropdownItem[] = [
             { value: "Toutes durées", label: "Toutes durées" },
         ]
     },
-    {
-        id: 28530636072,
-        title: "Popularité",
-        options: [
-            { value: "Populaires", label: "Les plus populaires" },
-            { value: "Tous", label: "Toutes catégories" },
-        ]
-    },
+    // {
+    //     id: 28530636072,
+    //     title: "Popularité",
+    //     options: [
+    //         { value: "Populaires", label: "Les plus populaires" },
+    //         { value: "Tous", label: "Toutes catégories" },
+    //     ]
+    // },
 
 ]

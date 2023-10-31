@@ -50,19 +50,23 @@ const dataSlice = createSlice({
     },
     pushExerciceTag: (state, action: PayloadAction<TagType>) => {
       if (action.payload) {
-        return {
-          ...state,
-          exercicesTagsData: [...state.exercicesTagsData, action.payload],
-        };
+        if (!state.exercicesTagsData.some(tag => tag.value === action.payload.value)) {
+          return {
+            ...state,
+            exercicesTagsData: [...state.exercicesTagsData, action.payload],
+          };
+        }
       }
       return state;
     },
     pushSpecialistTag: (state, action: PayloadAction<TagType>) => {
       if (action.payload) {
-        return {
-          ...state,
-          specialistsTagsData: [...state.specialistsTagsData, action.payload],
-        };
+        if (!state.specialistsTagsData.some(tag => tag.value === action.payload.value)) {
+          return {
+            ...state,
+            specialistsTagsData: [...state.specialistsTagsData, action.payload],
+          };
+        }
       }
       return state;
     },
@@ -132,7 +136,7 @@ const dataSlice = createSlice({
 
       });
 
-      const cloneExercicesArray: Exercice[] = filterBySearch(action.payload, initialArray)
+      const cloneExercicesArray: Exercice[] = (filterBySearch(action.payload, initialArray) as Exercice[])
 
       return action.payload ? {
         ...state,
@@ -159,7 +163,7 @@ const dataSlice = createSlice({
 
       });
 
-      const cloneSpecialistsArray: Specialist[] = filterBySearch(action.payload, initialArray)
+      const cloneSpecialistsArray = (filterBySearch(action.payload, initialArray) as Specialist[])
 
       return action.payload ? {
         ...state,

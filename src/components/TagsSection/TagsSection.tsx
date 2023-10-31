@@ -45,13 +45,13 @@ const TagsSection: React.FC<TagProps> = ({ data }) => {
     const action = currentURL.includes("exercices")
       ? () => {
           dispatch(removeExerciceTag(selectedItem));
-          dispatch(filterExercices(null));
-          dispatch(resetSelectedItem(null));
+          dispatch(filterExercices());
+          dispatch(resetSelectedItem());
         }
       : () => {
           dispatch(removeSpecialistTag(selectedItem));
-          dispatch(filterSpecialists(null));
-          dispatch(resetSelectedItem(null));
+          dispatch(filterSpecialists());
+          dispatch(resetSelectedItem());
         };
 
     action();

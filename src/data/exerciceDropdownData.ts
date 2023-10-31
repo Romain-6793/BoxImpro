@@ -16,12 +16,12 @@ export const exerciceDropdownData: DropdownItem[] = [
             { value: "Tous", label: "Tous type d'exercice" },
         ]
     },
-    {
-        id: 79076726875,
-        title: "Popularité",
-        options: [
-            { value: "Populaires", label: "Les plus populaires" },
-            { value: "Tous", label: "Tous les exercices" },
-        ]
-    },
+    // {
+    //     id: 79076726875,
+    //     title: "Popularité",
+    //     options: [
+    //         { value: "Populaires", label: "Les plus populaires" },
+    //         { value: "Tous", label: "Tous les exercices" },
+    //     ]
+    // },
 ]

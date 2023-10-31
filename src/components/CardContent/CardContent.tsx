@@ -35,7 +35,7 @@ const CardContent: React.FC<ObjectItemProps> = ({ obj }) => {
   return (
     <div>
       {Object.entries(obj)
-        .filter(([key]) => key !== "id" && key !== "tags")
+        .filter(([key]) => key !== "id" && key !== "tags" && key !== "likes")
         .map(([key, value]) => {
           const displayName = getDisplayName(key);
           return (

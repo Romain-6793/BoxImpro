@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { useState } from "react";
 import styled from "styled-components";
 import colors from "../../utils/style/colors";
 import styleVar from "../../utils/style/style-variables";
@@ -27,6 +28,13 @@ const StyledSearchSection = styled.div`
   height: ${styleVar.height}px;
   justify-content: space-around;
   margin-bottom: ${styleVar.margin}px;
+  @media (max-width: 975px) {
+    width: 75%;
+    height: 200px;
+  }
+  @media (max-width: 767px) {
+    height: 0;
+  }
 `;
 
 // PageContent is my central component, I call a useSelector to have access to my global state.
@@ -34,6 +42,18 @@ const StyledSearchSection = styled.div`
 // will display depending on the URL (exercices or specialists page) as well as my subtitle.
 
 const PageContent: React.FC<PageProps> = ({ subtitle }) => {
+  const [isSmall, setIsSmall] = useState({
+    matches: window.matchMedia("(max-width: 767px)").matches,
+  });
+
+  function screenListener() {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const handler = (e: any) => setIsSmall({ matches: e.matches });
+    window.matchMedia("(max-width: 767px)").addEventListener("change", handler);
+  }
+
+  screenListener();
+
   const currentURL = useUrl();
   const userState: State = useSelector(
     (state: RootState) => state.userData
@@ -58,7 +78,17 @@ const PageContent: React.FC<PageProps> = ({ subtitle }) => {
     ? exercicesTagsData
     : specialistsTagsData;
 
-  return (
+  return isSmall.matches ? (
+    <div className='flex-column'>
+      <StyledTitle>Box Impro</StyledTitle>;
+      <StyledSubtitle>{subtitle}</StyledSubtitle>
+      <StyledSearchSection className='flex'>
+        <SearchBar />
+      </StyledSearchSection>
+      <TagsSection data={tagData} />
+      <MainContent data={data}></MainContent>
+    </div>
+  ) : (
     <div className='flex-column'>
       <StyledTitle>Box Impro</StyledTitle>;
       <StyledSubtitle>{subtitle}</StyledSubtitle>
