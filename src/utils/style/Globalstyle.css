@@ -22,6 +22,11 @@
   justify-content: center;
 }
 
+.flex-end {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .purple-white {
   color: #fff;
   background: purple;

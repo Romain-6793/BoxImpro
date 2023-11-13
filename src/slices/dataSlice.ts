@@ -12,16 +12,29 @@ const initialState: State = {
   specialistsData: specialists,
   exercicesOptionsData: exerciceDropdownData,
   specialistsOptionsData: specialistDropdownData,
-  filteredExercicesData: exercices,
-  filteredSpecialistsData: specialists,
+  filteredExercicesData: exercices.sort((a, b) => (a.title > b.title) ?
+    1
+    :
+    (a.title < b.title) ?
+      -1
+      :
+      0
+  ),
+  filteredSpecialistsData: specialists.sort((a, b) => (a.title > b.title) ?
+    1
+    :
+    (a.title < b.title) ?
+      -1
+      :
+      0
+  ),
   exercicesTagsData: [],
   specialistsTagsData: [],
   selectedItem: {
     value: "",
     id: "",
-  }
+  },
 }
-
 
 const dataSlice = createSlice({
   name: "userData",
@@ -173,11 +186,32 @@ const dataSlice = createSlice({
         filteredSpecialistsData: initialArray,
       }
     },
-  }
-})
+    increaseExercicesLikes: (state, action) => {
+      // We search for the id that matches the action.payload
+      const index = state.filteredExercicesData.findIndex(item => item.id === action.payload);
+
+      if (index !== -1) {
+        // If the index is found, we use immer (at item) to update the state imuatbly---
+        state.filteredExercicesData = state.filteredExercicesData.map(
+          (item, i) => i === index ? { ...item, likes: item.likes + 1 } : item);
+      }
+    },
+    increaseSpecialistsLikes: (state, action) => {
+      // We search for the id that matches the action.payload
+      const index = state.filteredSpecialistsData.findIndex(item => item.id === action.payload);
+
+      if (index !== -1) {
+        // If the index is found, we use immer (at item) to update the state imuatbly---
+        state.filteredSpecialistsData = state.filteredSpecialistsData.map(
+          (item, i) => i === index ? { ...item, likes: item.likes + 1 } : item);
+      }
+    },
+  },
+},
+)
 
 export const { setSelectedItem, resetSelectedItem, pushExerciceTag, pushSpecialistTag, removeExerciceTag,
   removeSpecialistTag, filterExercices, filterSpecialists, filteredExercicesSearch,
-  filteredSpecialistsSearch } = dataSlice.actions;
+  filteredSpecialistsSearch, increaseExercicesLikes, increaseSpecialistsLikes } = dataSlice.actions;
 
 export default dataSlice.reducer
