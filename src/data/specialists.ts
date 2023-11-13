@@ -5,8 +5,8 @@ export const specialists: Specialist[] = [
     {
         id: 767415032660,
         tags: ["Contrainte de style", "Improvisation mixte", "Improvisation comparée",
-            "Tous types d'improvisation", "En solo", "Petit nombre", "Grand nombre",
-            "Tous nombres de joueurs", "Long"],
+            "En solo", "Petit nombre", "Grand nombre",
+            "Long"],
         title: "À la manière d'un auteur",
         specialistType: "Contrainte de style",
         improType: "mixte et comparée",
@@ -18,8 +18,8 @@ export const specialists: Specialist[] = [
     {
         id: 342062505048,
         tags: ["Contrainte de style", "Improvisation mixte", "Improvisation comparée",
-            "Tous types d'improvisation", "En solo", "Petit nombre", "Grand nombre",
-            "Tous nombres de joueurs", "Long"],
+            "En solo", "Petit nombre", "Grand nombre",
+            "Long"],
         title: "À la manière d'un genre",
         specialistType: "Contrainte de style",
         improType: "mixte et comparée",
@@ -55,7 +55,7 @@ export const specialists: Specialist[] = [
     {
         id: 261942527364,
         tags: ["Contrainte d'expression orale", "Improvisation mixte", "Improvisation comparée",
-            "Tous types d'improvisation", "Petit nombre", "Court"],
+            "Petit nombre", "Court"],
         title: "Rimée",
         specialistType: "Contrainte d'expression orale",
         improType: "mixte et comparée",
@@ -67,7 +67,7 @@ export const specialists: Specialist[] = [
     {
         id: 138987931562,
         tags: ["Contrainte d'expression orale", "Improvisation mixte", "Improvisation comparée",
-            "Tous types d'improvisation", "Petit nombre", "Court"],
+            "Petit nombre", "Court"],
         title: "Chantée",
         specialistType: "Contrainte d'expression orale",
         improType: "mixte et comparée",
@@ -122,7 +122,7 @@ export const specialists: Specialist[] = [
     },
     {
         id: 321384998131,
-        tags: ["Contraintes diverses", "Improvisation mixte", "Improvisation comparée", "Tous types d'improvisation", "Petit nombre", "Court"],
+        tags: ["Contraintes diverses", "Improvisation mixte", "Improvisation comparée", "Petit nombre", "Court"],
         title: "Musicale",
         specialistType: "Contraintes diverses",
         improType: "mixte et comparée",
@@ -133,7 +133,7 @@ export const specialists: Specialist[] = [
     },
     {
         id: 31708866390,
-        tags: ["Contraintes diverses", "Improvisation mixte", "Improvisation comparée", "Tous types d'improvisation", "Petit nombre", "Court"],
+        tags: ["Contraintes diverses", "Improvisation mixte", "Improvisation comparée", "Petit nombre", "Court"],
         title: "Objet détourné / Accessoire",
         specialistType: "Contraintes diverses",
         improType: "mixte et comparée",

@@ -10,7 +10,6 @@ export const specialistDropdownData: DropdownItem[] = [
             { value: "Contrainte d'expression orale", label: "Contrainte d'expression orale" },
             { value: "Contraintes diverses", label: "Contraintes diverses" },
             { value: "Contrainte de structure", label: "Contrainte de structure" },
-            { value: "Toutes contraintes", label: "Tous type de contraintes" },
         ]
     },
     {
@@ -19,7 +18,6 @@ export const specialistDropdownData: DropdownItem[] = [
         options: [
             { value: "Improvisation mixte", label: "Improvisation mixte" },
             { value: "Improvisation comparée", label: "Improvisation comparée" },
-            { value: "Tous types", label: "Tous type d'improvisation" },
         ]
     },
     {
@@ -29,7 +27,6 @@ export const specialistDropdownData: DropdownItem[] = [
             { value: "En solo", label: "En solo" },
             { value: "Petit nombre", label: "Petit nombre" },
             { value: "Grand nombre", label: "Grand nombre" },
-            { value: "Tous nombres de joueurs", label: "Tous nombres de joueurs" },
         ]
     },
     {
@@ -39,16 +36,14 @@ export const specialistDropdownData: DropdownItem[] = [
             { value: "Très court", label: "Très court" },
             { value: "Court", label: "Court" },
             { value: "Long", label: "Long" },
-            { value: "Toutes durées", label: "Toutes durées" },
         ]
     },
-    // {
-    //     id: 28530636072,
-    //     title: "Popularité",
-    //     options: [
-    //         { value: "Populaires", label: "Les plus populaires" },
-    //         { value: "Tous", label: "Toutes catégories" },
-    //     ]
-    // },
-
+    {
+        id: 28530636072,
+        title: "Ordre alphabétique",
+        options: [
+            { value: "Popularité", label: "Popularité" },
+            { value: "Ordre alphabétique", label: "Ordre alphabétique" },
+        ]
+    },
 ]

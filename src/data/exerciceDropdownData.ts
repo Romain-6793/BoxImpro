@@ -13,15 +13,14 @@ export const exerciceDropdownData: DropdownItem[] = [
             { value: "Travail du regard", label: "Travail du regard" },
             { value: "Gestion de l'espace", label: "Gestion de l'espace" },
             { value: "Conscience du temps", label: "Conscience du temps" },
-            { value: "Tous", label: "Tous type d'exercice" },
         ]
     },
-    // {
-    //     id: 79076726875,
-    //     title: "Popularité",
-    //     options: [
-    //         { value: "Populaires", label: "Les plus populaires" },
-    //         { value: "Tous", label: "Tous les exercices" },
-    //     ]
-    // },
+    {
+        id: 79076726875,
+        title: "Ordre alphabétique",
+        options: [
+            { value: "Popularité", label: "Popularité" },
+            { value: "Ordre alphabétique", label: "Ordre alphabétique" },
+        ]
+    },
 ]

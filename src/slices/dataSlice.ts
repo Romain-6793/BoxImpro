@@ -206,12 +206,51 @@ const dataSlice = createSlice({
           (item, i) => i === index ? { ...item, likes: item.likes + 1 } : item);
       }
     },
+    sortExercicesAZ: (state) => {
+      return {
+        ...state,
+        filteredExercicesData: initialState.filteredExercicesData
+      }
+    },
+    sortSpecialistsAZ: (state) => {
+      return {
+        ...state,
+        filteredSpecialistsData: initialState.filteredSpecialistsData
+      }
+    },
+    sortExercicesPopularity: (state) => {
+      return {
+        ...state,
+        filteredExercicesData: exercices.sort((a, b) => (a.likes > b.likes) ?
+          1
+          :
+          (a.likes < b.likes) ?
+            -1
+            :
+            0
+        ),
+      }
+    },
+    sortSpecialistsPopularity: (state) => {
+      return {
+        ...state,
+        filteredSpecialistsData: specialists.sort((a, b) => (a.likes > b.likes) ?
+          1
+          :
+          (a.likes < b.likes) ?
+            -1
+            :
+            0
+        ),
+      }
+    },
   },
 },
 )
 
 export const { setSelectedItem, resetSelectedItem, pushExerciceTag, pushSpecialistTag, removeExerciceTag,
   removeSpecialistTag, filterExercices, filterSpecialists, filteredExercicesSearch,
-  filteredSpecialistsSearch, increaseExercicesLikes, increaseSpecialistsLikes } = dataSlice.actions;
+  filteredSpecialistsSearch, increaseExercicesLikes, increaseSpecialistsLikes, sortExercicesAZ,
+  sortSpecialistsAZ, sortExercicesPopularity, sortSpecialistsPopularity } = dataSlice.actions;
 
 export default dataSlice.reducer

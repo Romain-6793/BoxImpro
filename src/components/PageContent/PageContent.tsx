@@ -6,7 +6,8 @@ import styleVar from "../../utils/style/style-variables";
 import useUrl from "../../utils/hooks/useUrl";
 import { RootState, PageProps, State } from "../../data/types";
 import MainContent from "../MainContent/MainContent";
-import DropdownComponent from "../DropdownComponent/DropdownComponent";
+import DropdownFilter from "../DropdownFilter/DropdownFilter";
+import DropdownSort from "../DropdownSort/Dropdownsort";
 import SearchBar from "../SearchBar/SearchBar";
 import TagsSection from "../TagsSection/TagsSection";
 
@@ -83,6 +84,7 @@ const PageContent: React.FC<PageProps> = ({ subtitle }) => {
       <StyledTitle>Box Impro</StyledTitle>;
       <StyledSubtitle>{subtitle}</StyledSubtitle>
       <StyledSearchSection className='flex'>
+        <DropdownSort data={dropdownData} />
         <SearchBar />
       </StyledSearchSection>
       <TagsSection data={tagData} />
@@ -93,7 +95,8 @@ const PageContent: React.FC<PageProps> = ({ subtitle }) => {
       <StyledTitle>Box Impro</StyledTitle>;
       <StyledSubtitle>{subtitle}</StyledSubtitle>
       <StyledSearchSection className='flex'>
-        <DropdownComponent data={dropdownData} />
+        <DropdownFilter data={dropdownData} />
+        <DropdownSort data={dropdownData} />
         <SearchBar />
       </StyledSearchSection>
       <TagsSection data={tagData} />
