@@ -3,11 +3,11 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import useUrl from "../../utils/hooks/useUrl";
 import {
-  setSelectedItem,
   sortExercicesAZ,
   sortSpecialistsAZ,
   sortExercicesPopularity,
   sortSpecialistsPopularity,
+  setSelectedSortingOption,
 } from "../../slices/dataSlice";
 import { Dropdown } from "primereact/dropdown";
 import {
@@ -27,51 +27,36 @@ const DropdownSort: React.FC<DropdownProps> = ({ data }) => {
   const userState: State = useSelector(
     (state: RootState) => state.userData
   ) as State;
-  const selectedItem = userState.selectedItem;
+  const selectedSortingOption = userState.selectedSortingOption;
   const dispatch = useDispatch();
   const currentURL = useUrl();
 
   useEffect(() => {
     // useEffect plays every time selectedItem is set to call handleSelect
-    if (selectedItem.id) {
-      handleSelect();
+    if (selectedSortingOption.id) {
+      handleSort();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedItem]);
+  }, [selectedSortingOption]);
 
   const handleChange = (value: string) => {
-    dispatch(setSelectedItem(value));
-    console.log(selectedItem);
+    dispatch(setSelectedSortingOption(value));
   };
 
-  const handleSelect = () => {
+  const handleSort = () => {
     // The action called depends on the URL, i.e. the active page
 
-    // const action = currentURL.includes("exercices")
-    //   ? () => {
-    //       dispatch(pushExerciceTag(selectedItem));
-    //       dispatch(filterExercices());
-    //     }
-    //   : () => {
-    //       dispatch(pushSpecialistTag(selectedItem));
-    //       dispatch(filterSpecialists());
-    //     };
+    const isExercicesPage = currentURL.includes("exercices");
+    const sortAction =
+      selectedSortingOption.value === "Popularité"
+        ? isExercicesPage
+          ? sortExercicesPopularity()
+          : sortSpecialistsPopularity()
+        : isExercicesPage
+        ? sortExercicesAZ()
+        : sortSpecialistsAZ();
 
-    // action();
-
-    if (currentURL.includes("exercices")) {
-      if (selectedItem.title === "Popularité") {
-        dispatch(sortExercicesPopularity);
-      } else {
-        dispatch(sortExercicesAZ);
-      }
-    } else {
-      if (selectedItem.title === "Popularité") {
-        dispatch(sortSpecialistsPopularity);
-      } else {
-        dispatch(sortSpecialistsAZ);
-      }
-    }
+    dispatch(sortAction);
   };
 
   // The map below will act on the DropdownData (see PageContent), it will render every dropdown to
@@ -87,7 +72,7 @@ const DropdownSort: React.FC<DropdownProps> = ({ data }) => {
             .map((item) => (
               <Dropdown
                 key={item.id}
-                value={selectedItem.value}
+                value={selectedSortingOption.value}
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 onChange={(e: any) => {
                   handleChange(e.value);

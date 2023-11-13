@@ -53,7 +53,8 @@ export type State = {
   filteredSpecialistsData: Specialist[],
   exercicesTagsData: [] | TagType[],
   specialistsTagsData: [] | TagType[],
-  selectedItem: TagType,
+  selectedOption: TagType,
+  selectedSortingOption: TagType,
 }
 
 // Props

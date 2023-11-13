@@ -34,7 +34,7 @@ export const exercices: Exercice[] = [
         description: "Les joueurs sont assis sur des chaises en rond. Une personne se lève puis s'assied. Au moment où elle s'assied une seule autre personne doit se lever. Si deux personnes se lèvent en même temps on recommence.",
         advices: "Difficile à réaliser du premier coup, l'exercice pourra être proposé lors des séances suivantes jusqu'à sa réussite. Attention au rythme. Tout le monde doit se lever et pas toujours les mêmes. Ne pas se précipiter, se regarder.",
         variants: "On complique le jeu en faisant se lever 2 personnes à la fois et, au moment où elles se rasseyent 2 autres doivent se lever et ainsi de suite.",
-        likes: 136,
+        likes: 1136,
     },
     {
         id: 953349055791,

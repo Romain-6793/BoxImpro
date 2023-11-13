@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import useUrl from "../../utils/hooks/useUrl";
 import {
-  setSelectedItem,
+  setSelectedOption,
   filterExercices,
   filterSpecialists,
   pushExerciceTag,
@@ -27,21 +27,20 @@ const DropdownFilter: React.FC<DropdownProps> = ({ data }) => {
   const userState: State = useSelector(
     (state: RootState) => state.userData
   ) as State;
-  const selectedItem = userState.selectedItem;
+  const selectedOption = userState.selectedOption;
   const dispatch = useDispatch();
   const currentURL = useUrl();
 
   useEffect(() => {
     // useEffect plays every time selectedItem is set to call handleSelect
-    if (selectedItem.id) {
+    if (selectedOption.id) {
       handleSelect();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedItem]);
+  }, [selectedOption]);
 
   const handleChange = (value: string) => {
-    dispatch(setSelectedItem(value));
-    console.log(selectedItem);
+    dispatch(setSelectedOption(value));
   };
 
   const handleSelect = () => {
@@ -49,11 +48,11 @@ const DropdownFilter: React.FC<DropdownProps> = ({ data }) => {
 
     const action = currentURL.includes("exercices")
       ? () => {
-          dispatch(pushExerciceTag(selectedItem));
+          dispatch(pushExerciceTag(selectedOption));
           dispatch(filterExercices());
         }
       : () => {
-          dispatch(pushSpecialistTag(selectedItem));
+          dispatch(pushSpecialistTag(selectedOption));
           dispatch(filterSpecialists());
         };
 
@@ -73,7 +72,7 @@ const DropdownFilter: React.FC<DropdownProps> = ({ data }) => {
             .map((item) => (
               <Dropdown
                 key={item.id}
-                value={selectedItem.value}
+                value={selectedOption.value}
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 onChange={(e: any) => {
                   handleChange(e.value);

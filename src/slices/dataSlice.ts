@@ -12,13 +12,7 @@ const initialState: State = {
   specialistsData: specialists,
   exercicesOptionsData: exerciceDropdownData,
   specialistsOptionsData: specialistDropdownData,
-  filteredExercicesData: exercices.sort((a, b) => (a.title > b.title) ?
-    1
-    :
-    (a.title < b.title) ?
-      -1
-      :
-      0
+  filteredExercicesData: exercices.sort((a, b) => a.title.localeCompare(b.title)
   ),
   filteredSpecialistsData: specialists.sort((a, b) => (a.title > b.title) ?
     1
@@ -30,7 +24,11 @@ const initialState: State = {
   ),
   exercicesTagsData: [],
   specialistsTagsData: [],
-  selectedItem: {
+  selectedOption: {
+    value: "",
+    id: "",
+  },
+  selectedSortingOption: {
     value: "",
     id: "",
   },
@@ -40,12 +38,46 @@ const dataSlice = createSlice({
   name: "userData",
   initialState,
   reducers: {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    setSelectedItem: (state, action: PayloadAction<string>) => {
+    // storeUsersList(state, action) {
+
+    //   const usersArray = [...state.usersArray];
+    //   localStorage.setItem("usersArray", JSON.stringify(usersArray))
+    // },
+    // loadData(state, action) {
+    //   const data = localStorage.getItem("usersArray")
+    //   if (data) {
+    //     return {
+    //       ...state,
+    //       usersArray: JSON.parse(data),
+    //       filteredArray: JSON.parse(data).sort((a, b) => (a.firstName > b.firstName) ?
+    //         1
+    //         :
+    //         (a.firstName < b.firstName) ?
+    //           -1
+    //           :
+    //           0
+    //       )
+    //     };
+    //   } else return { ...state };
+    // },
+    setSelectedOption: (state, action: PayloadAction<string>) => {
       if (action.payload) {
         return {
           ...state,
-          selectedItem: {
+          selectedOption: {
+            id: generateID(),
+            value: action.payload
+          },
+        };
+      }
+      return state;
+    },
+    setSelectedSortingOption: (state, action: PayloadAction<string>) => {
+      if (action.payload) {
+        return {
+          ...state,
+          selectedSortingOption
+            : {
             id: generateID(),
             value: action.payload
           },
@@ -56,8 +88,8 @@ const dataSlice = createSlice({
     resetSelectedItem: (state) => {
       return {
         ...state,
-        selectedItem: {
-          ...initialState.selectedItem
+        selectedOption: {
+          ...initialState.selectedOption
         }
       };
     },
@@ -209,22 +241,26 @@ const dataSlice = createSlice({
     sortExercicesAZ: (state) => {
       return {
         ...state,
-        filteredExercicesData: initialState.filteredExercicesData
-      }
+        filteredExercicesData: [...state.filteredExercicesData].sort((a, b) =>
+          a.title.localeCompare(b.title)
+        ),
+      };
     },
     sortSpecialistsAZ: (state) => {
       return {
         ...state,
-        filteredSpecialistsData: initialState.filteredSpecialistsData
-      }
+        filteredSpecialistsData: [...state.filteredSpecialistsData].sort((a, b) =>
+          a.title.localeCompare(b.title)
+        ),
+      };
     },
     sortExercicesPopularity: (state) => {
       return {
         ...state,
-        filteredExercicesData: exercices.sort((a, b) => (a.likes > b.likes) ?
+        filteredExercicesData: [...state.filteredExercicesData].sort((a, b) => (a.likes < b.likes) ?
           1
           :
-          (a.likes < b.likes) ?
+          (a.likes > b.likes) ?
             -1
             :
             0
@@ -234,10 +270,10 @@ const dataSlice = createSlice({
     sortSpecialistsPopularity: (state) => {
       return {
         ...state,
-        filteredSpecialistsData: specialists.sort((a, b) => (a.likes > b.likes) ?
+        filteredSpecialistsData: [...state.filteredSpecialistsData].sort((a, b) => (a.likes < b.likes) ?
           1
           :
-          (a.likes < b.likes) ?
+          (a.likes > b.likes) ?
             -1
             :
             0
@@ -248,8 +284,8 @@ const dataSlice = createSlice({
 },
 )
 
-export const { setSelectedItem, resetSelectedItem, pushExerciceTag, pushSpecialistTag, removeExerciceTag,
-  removeSpecialistTag, filterExercices, filterSpecialists, filteredExercicesSearch,
+export const { setSelectedOption, setSelectedSortingOption, resetSelectedItem, pushExerciceTag, pushSpecialistTag,
+  removeExerciceTag, removeSpecialistTag, filterExercices, filterSpecialists, filteredExercicesSearch,
   filteredSpecialistsSearch, increaseExercicesLikes, increaseSpecialistsLikes, sortExercicesAZ,
   sortSpecialistsAZ, sortExercicesPopularity, sortSpecialistsPopularity } = dataSlice.actions;
 
