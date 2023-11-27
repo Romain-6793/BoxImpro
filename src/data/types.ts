@@ -57,7 +57,18 @@ export type State = {
   selectedSortingOption: TagType,
 }
 
+export type Slide = {
+  name: string,
+  title: string,
+  subtitle?: string,
+  text: string
+}
+
 // Props
+
+export type SliderProps = {
+  slides: Slide[];
+};
 
 export type PageProps = {
   subtitle: string;

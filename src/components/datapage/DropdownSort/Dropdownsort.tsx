@@ -1,62 +1,62 @@
 import styled from "styled-components";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import useUrl from "../../utils/hooks/useUrl";
+import useUrl from "../../../utils/hooks/useUrl";
 import {
-  setSelectedOption,
-  filterExercices,
-  filterSpecialists,
-  pushExerciceTag,
-  pushSpecialistTag,
-} from "../../slices/dataSlice";
+  sortExercicesAZ,
+  sortSpecialistsAZ,
+  sortExercicesPopularity,
+  sortSpecialistsPopularity,
+  setSelectedSortingOption,
+} from "../../../slices/dataSlice";
 import { Dropdown } from "primereact/dropdown";
 import {
   RootState,
   State,
   DropdownItem,
   DropdownProps,
-} from "../../data/types";
+} from "../../../data/types";
 
 const StyledP = styled.p`
   margin-top: 10px;
 `;
 
-const DropdownFilter: React.FC<DropdownProps> = ({ data }) => {
+const DropdownSort: React.FC<DropdownProps> = ({ data }) => {
   // Here, I call a useSelector to have access to my global state, and more precisely, to SelectedItem
 
   const userState: State = useSelector(
     (state: RootState) => state.userData
   ) as State;
-  const selectedOption = userState.selectedOption;
+  const selectedSortingOption = userState.selectedSortingOption;
   const dispatch = useDispatch();
   const currentURL = useUrl();
 
   useEffect(() => {
     // useEffect plays every time selectedItem is set to call handleSelect
-    if (selectedOption.id) {
-      handleSelect();
+    if (selectedSortingOption.id) {
+      handleSort();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedOption]);
+  }, [selectedSortingOption]);
 
   const handleChange = (value: string) => {
-    dispatch(setSelectedOption(value));
+    dispatch(setSelectedSortingOption(value));
   };
 
-  const handleSelect = () => {
+  const handleSort = () => {
     // The action called depends on the URL, i.e. the active page
 
-    const action = currentURL.includes("exercices")
-      ? () => {
-          dispatch(pushExerciceTag(selectedOption));
-          dispatch(filterExercices());
-        }
-      : () => {
-          dispatch(pushSpecialistTag(selectedOption));
-          dispatch(filterSpecialists());
-        };
+    const isExercicesPage = currentURL.includes("exercices");
+    const sortAction =
+      selectedSortingOption.value === "Popularité"
+        ? isExercicesPage
+          ? sortExercicesPopularity()
+          : sortSpecialistsPopularity()
+        : isExercicesPage
+        ? sortExercicesAZ()
+        : sortSpecialistsAZ();
 
-    action();
+    dispatch(sortAction);
   };
 
   // The map below will act on the DropdownData (see PageContent), it will render every dropdown to
@@ -64,15 +64,15 @@ const DropdownFilter: React.FC<DropdownProps> = ({ data }) => {
 
   return (
     <div className='flex'>
-      <StyledP>Filtrer par : </StyledP>
+      <StyledP>Trier par : </StyledP>
       <div>
         {data &&
           data
-            .filter((item: DropdownItem) => item.title !== "Ordre alphabétique")
+            .filter((item: DropdownItem) => item.title === "Ordre alphabétique")
             .map((item) => (
               <Dropdown
                 key={item.id}
-                value={selectedOption.value}
+                value={selectedSortingOption.value}
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 onChange={(e: any) => {
                   handleChange(e.value);
@@ -86,4 +86,4 @@ const DropdownFilter: React.FC<DropdownProps> = ({ data }) => {
   );
 };
 
-export default DropdownFilter;
+export default DropdownSort;

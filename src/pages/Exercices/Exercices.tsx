@@ -1,4 +1,4 @@
-import PageContent from "../../components/PageContent/PageContent";
+import PageContent from "../../components/datapage/PageContent/PageContent";
 
 const Exercices = (): JSX.Element => {
   return (

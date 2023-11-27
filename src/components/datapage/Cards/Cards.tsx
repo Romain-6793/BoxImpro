@@ -1,16 +1,16 @@
 import "primeicons/primeicons.css";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import styleVar from "../../utils/style/style-variables";
-import colors from "../../utils/style/colors";
-import useUrl from "../../utils/hooks/useUrl";
+import styleVar from "../../../utils/style/style-variables";
+import colors from "../../../utils/style/colors";
+import useUrl from "../../../utils/hooks/useUrl";
 import { Card } from "primereact/card";
-import { Exercice, Specialist, CardsProps } from "../../data/types";
+import { Exercice, Specialist, CardsProps } from "../../../data/types";
 import CardContent from "../CardContent/CardContent";
 import {
   increaseExercicesLikes,
   increaseSpecialistsLikes,
-} from "../../slices/dataSlice";
+} from "../../../slices/dataSlice";
 
 const StyledMain = styled.main`
   margin-top: ${styleVar.margin}px;
@@ -67,6 +67,8 @@ const Cards: React.FC<CardsProps> = ({ data }) => {
   const dispatch = useDispatch();
   const currentURL = useUrl();
 
+  //externalize handleLikesClick
+
   const handleLikesClick = (itemId: number) => {
     currentURL.includes("exercices")
       ? dispatch(increaseExercicesLikes(itemId))
@@ -81,7 +83,10 @@ const Cards: React.FC<CardsProps> = ({ data }) => {
             <CardContent obj={item} />
             <div className='flex-end'>
               <StyledSpan>{item.likes}</StyledSpan>
-              <StyledButton onClick={() => handleLikesClick(item.id)}>
+              <StyledButton
+                onClick={() => handleLikesClick(item.id)}
+                data-testid={`like-button-${item.id}`}
+              >
                 <i
                   className='pi pi-heart-fill hearticon'
                   style={{ color: "#ff7417" }}

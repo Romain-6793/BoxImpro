@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import styled from "styled-components";
-import colors from "../../utils/style/colors";
-import styleVar from "../../utils/style/style-variables";
-import useUrl from "../../utils/hooks/useUrl";
-import { RootState, PageProps, State } from "../../data/types";
+import colors from "../../../utils/style/colors";
+import styleVar from "../../../utils/style/style-variables";
+import useUrl from "../../../utils/hooks/useUrl";
+import { RootState, PageProps, State } from "../../../data/types";
 import MainContent from "../MainContent/MainContent";
 import DropdownFilter from "../DropdownFilter/DropdownFilter";
 import DropdownSort from "../DropdownSort/Dropdownsort";

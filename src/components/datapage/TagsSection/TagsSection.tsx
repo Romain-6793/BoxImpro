@@ -1,16 +1,16 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import useUrl from "../../utils/hooks/useUrl";
+import useUrl from "../../../utils/hooks/useUrl";
 import {
   filterExercices,
   filterSpecialists,
   removeExerciceTag,
   removeSpecialistTag,
   resetSelectedItem,
-} from "../../slices/dataSlice";
+} from "../../../slices/dataSlice";
 import { Tag } from "primereact/tag";
-import { TagProps, TagType } from "../../data/types";
+import { TagProps, TagType } from "../../../data/types";
 
 const StyledSpan = styled.span`
   margin-right: 10px;
