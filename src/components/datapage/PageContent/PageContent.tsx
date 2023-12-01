@@ -11,12 +11,24 @@ import DropdownSort from "../DropdownSort/Dropdownsort";
 import SearchBar from "../SearchBar/SearchBar";
 import TagsSection from "../TagsSection/TagsSection";
 
+const StyledWrapper = styled.div`
+  background: ${colors.white};
+`;
+
 const StyledTitle = styled.h1`
   color: ${colors.secondary};
   font-family: ${styleVar.titleFontFamily};
 `;
 
-const StyledSubtitle = styled.h2`
+const StyledSubtitleExercices = styled.h2`
+  color: black;
+  font-family: ${styleVar.titleFontFamily};
+  font-size: 30px;
+  text-decoration: underline;
+  margin-top: -25px;
+`;
+
+const StyledSubtitleSpecialists = styled.h2`
   color: ${colors.primary};
   font-family: ${styleVar.titleFontFamily};
   font-size: 30px;
@@ -25,7 +37,7 @@ const StyledSubtitle = styled.h2`
 `;
 
 const StyledSearchSection = styled.div`
-  width: ${styleVar.widthFull}%;
+  width: 75%;
   height: ${styleVar.height}px;
   justify-content: space-around;
   margin-bottom: ${styleVar.margin}px;
@@ -33,7 +45,7 @@ const StyledSearchSection = styled.div`
     width: 75%;
     height: 200px;
   }
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     height: 0;
   }
 `;
@@ -56,6 +68,7 @@ const PageContent: React.FC<PageProps> = ({ subtitle }) => {
   screenListener();
 
   const currentURL = useUrl();
+  const exercicesPage = currentURL.includes("exercices");
   const userState: State = useSelector(
     (state: RootState) => state.userData
   ) as State;
@@ -69,31 +82,35 @@ const PageContent: React.FC<PageProps> = ({ subtitle }) => {
     specialistsTagsData,
   } = userState;
 
-  const data = currentURL.includes("exercices")
-    ? filteredExercicesData
-    : filteredSpecialistsData;
-  const dropdownData = currentURL.includes("exercices")
+  const data = exercicesPage ? filteredExercicesData : filteredSpecialistsData;
+  const dropdownData = exercicesPage
     ? exercicesOptionsData
     : specialistsOptionsData;
-  const tagData = currentURL.includes("exercices")
-    ? exercicesTagsData
-    : specialistsTagsData;
+  const tagData = exercicesPage ? exercicesTagsData : specialistsTagsData;
 
   return isSmall.matches ? (
-    <div className='flex-column'>
-      <StyledTitle>Box Impro</StyledTitle>;
-      <StyledSubtitle>{subtitle}</StyledSubtitle>
+    <StyledWrapper className='flex-column'>
+      <StyledTitle>Box Impro</StyledTitle>;{" "}
+      {exercicesPage ? (
+        <StyledSubtitleExercices>{subtitle}</StyledSubtitleExercices>
+      ) : (
+        <StyledSubtitleSpecialists>{subtitle}</StyledSubtitleSpecialists>
+      )}
       <StyledSearchSection className='flex'>
         <DropdownSort data={dropdownData} />
         <SearchBar />
       </StyledSearchSection>
       <TagsSection data={tagData} />
       <MainContent data={data}></MainContent>
-    </div>
+    </StyledWrapper>
   ) : (
-    <div className='flex-column'>
+    <StyledWrapper className='flex-column'>
       <StyledTitle>Box Impro</StyledTitle>;
-      <StyledSubtitle>{subtitle}</StyledSubtitle>
+      {exercicesPage ? (
+        <StyledSubtitleExercices>{subtitle}</StyledSubtitleExercices>
+      ) : (
+        <StyledSubtitleSpecialists>{subtitle}</StyledSubtitleSpecialists>
+      )}
       <StyledSearchSection className='flex'>
         <DropdownFilter data={dropdownData} />
         <DropdownSort data={dropdownData} />
@@ -101,7 +118,7 @@ const PageContent: React.FC<PageProps> = ({ subtitle }) => {
       </StyledSearchSection>
       <TagsSection data={tagData} />
       <MainContent data={data}></MainContent>
-    </div>
+    </StyledWrapper>
   );
 };
 

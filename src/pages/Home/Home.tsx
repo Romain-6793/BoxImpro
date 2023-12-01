@@ -3,20 +3,25 @@ import styleVar from "../../utils/style/style-variables";
 import { slides } from "../../data/slides";
 import Slider from "../../components/homepage/Slider";
 
+const StyledMainDiv = styled.div`
+  width: 100%;
+  background: black;
+`;
+
 const StyledHero = styled.div`
   width: 75%;
   margin-top: ${styleVar.margin}px;
-  border-radius: ${styleVar.borderRadius}px;
+  margin-bottom: ${styleVar.margin}px;
   position: relative;
 `;
 
 const Home = (): JSX.Element => {
   return (
-    <div className='flex-center'>
+    <StyledMainDiv className='flex-center'>
       <StyledHero className='flex-title'>
         <Slider slides={slides} />
       </StyledHero>
-    </div>
+    </StyledMainDiv>
   );
 };
 

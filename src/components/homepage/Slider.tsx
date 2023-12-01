@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import styleVar from "../../utils/style/style-variables";
+import colors from "../../utils/style/colors";
 import leftArrow from "../../assets/vector-left.svg";
 import rightArrow from "../../assets/vector-right.svg";
 import BoxImproBg from "../../assets/boximpro-background.png";
@@ -61,10 +62,18 @@ const StyledTitle = styled.h1`
 const StyledTitleDiv2 = styled.div`
   position: absolute;
   color: orange;
-  left: 30%;
+  left: 10%;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: flex-start;
+  @media (max-width: 975px) {
+    top: 5%;
+  }
 `;
 
 const StyledSubTitle = styled.h2`
+  color: ${colors.white};
+  font-weight: bolder;
   @media (max-width: 975px) {
     font-size: 18px;
   }
@@ -79,10 +88,12 @@ const StyledTextBox = styled.div`
   position: absolute;
   width: 75%;
   color: #fff;
-  padding: 5px;
-  @media (min-width: 767px) {
-    position: absolute;
+  padding: 8px;
+  @media (min-width: 1010px) {
     bottom: 200px;
+  }
+  @media (max-width: 1010px) {
+    bottom: 100px;
   }
   @media (max-width: 767px) {
     position: static;
@@ -91,8 +102,11 @@ const StyledTextBox = styled.div`
 `;
 
 const StyledText = styled.p`
-  font-size: 12px;
+  font-size: 15px;
   font-weight: bold;
+  @media (max-width: 1010px) {
+    font-size: 12px;
+  }
 `;
 
 const StyledBackground = styled.img`
@@ -112,6 +126,20 @@ const StyledLeftBtn = styled.button`
   cursor: pointer;
   z-index: 2;
   left: 23.36px;
+  &:hover {
+    border: none;
+  }
+  &:active {
+    border: none;
+    outline: none;
+  }
+  &:focus {
+    border: none;
+    outline: none;
+  }
+  &:visited {
+    border: none;
+  }
   @media (max-width: 525px) {
     top: 200px;
   }
@@ -130,6 +158,20 @@ const StyledRightBtn = styled.button`
   cursor: pointer;
   z-index: 2;
   right: 23.36px;
+  &:hover {
+    border: none;
+  }
+  &:active {
+    border: none;
+    outline: none;
+  }
+  &:focus {
+    border: none;
+    outline: none;
+  }
+  &:visited {
+    border: none;
+  }
   @media (max-width: 526px) {
     top: 200px;
   }
@@ -184,6 +226,7 @@ const Slider: React.FC<SliderProps> = ({ slides }) => {
         ) : (
           <StyledTitleDiv2>
             <StyledTitle>{slides[currentIndex].title}</StyledTitle>
+            <StyledSubTitle>{slides[currentIndex].subtitle}</StyledSubTitle>
           </StyledTitleDiv2>
         )}
         <StyledBackground src={BoxImproBg} />
@@ -220,6 +263,7 @@ const Slider: React.FC<SliderProps> = ({ slides }) => {
         ) : (
           <StyledTitleDiv2>
             <StyledTitle>{slides[currentIndex].title}</StyledTitle>
+            <StyledSubTitle>{slides[currentIndex].subtitle}</StyledSubTitle>
           </StyledTitleDiv2>
         )}
         <div className='flex-center'>

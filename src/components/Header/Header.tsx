@@ -9,14 +9,14 @@ const StyledNav = styled.nav`
   width: ${styleVar.widthFull}%;
   .p-menubar {
     font-family: ${styleVar.fontFamily};
-    height: ${styleVar.heightFull}px;
+    height: 60px;
     background: ${colors.primary};
     border: none;
   }
 `;
 
 const StyledLogo = styled.img`
-  height: ${styleVar.heightFull}px;
+  height: 60px;
   margin-left: 40px;
   margin-top: 16px;
 `;

@@ -12,7 +12,27 @@ import {
   increaseSpecialistsLikes,
 } from "../../../slices/dataSlice";
 
-const StyledMain = styled.main`
+const StyledMainExercices = styled.main`
+  margin-top: ${styleVar.margin}px;
+  .p-card {
+    font-family: ${styleVar.fontFamily};
+    width: 75%;
+    background: ${colors.tertiary};
+    border: 1px solid ${colors.black};
+    color: ${colors.black};
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .p-card-title {
+    font-weight: normal;
+    background: black;
+    text-align: center;
+    color: ${colors.white};
+    border-radius: ${styleVar.borderRadius}px;
+  }
+`;
+
+const StyledMainSpecialists = styled.main`
   margin-top: ${styleVar.margin}px;
   .p-card {
     font-family: ${styleVar.fontFamily};
@@ -58,6 +78,10 @@ const StyledButton = styled.button`
 const StyledSpan = styled.span`
   margin-top: 5px;
   margin-left: 5px;
+  font-size: 20px;
+  @media (max-width: 768px) {
+    font-size: 15px;
+  }
 `;
 
 // In the return of my component a data item can be either of type Exercice or Specialist.
@@ -75,8 +99,8 @@ const Cards: React.FC<CardsProps> = ({ data }) => {
       : dispatch(increaseSpecialistsLikes(itemId));
   };
 
-  return (
-    <StyledMain className='flex-column'>
+  return currentURL.includes("exercices") ? (
+    <StyledMainExercices className='flex-column'>
       {data &&
         data.map((item: Exercice | Specialist) => (
           <Card title={item.title} key={item.id}>
@@ -95,7 +119,28 @@ const Cards: React.FC<CardsProps> = ({ data }) => {
             </div>
           </Card>
         ))}
-    </StyledMain>
+    </StyledMainExercices>
+  ) : (
+    <StyledMainSpecialists className='flex-column'>
+      {data &&
+        data.map((item: Exercice | Specialist) => (
+          <Card title={item.title} key={item.id}>
+            <CardContent obj={item} />
+            <div className='flex-end'>
+              <StyledSpan>{item.likes}</StyledSpan>
+              <StyledButton
+                onClick={() => handleLikesClick(item.id)}
+                data-testid={`like-button-${item.id}`}
+              >
+                <i
+                  className='pi pi-heart-fill hearticon'
+                  style={{ color: "#ff7417" }}
+                ></i>
+              </StyledButton>
+            </div>
+          </Card>
+        ))}
+    </StyledMainSpecialists>
   );
 };
 
