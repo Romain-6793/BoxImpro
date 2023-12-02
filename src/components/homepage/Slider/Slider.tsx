@@ -1,85 +1,18 @@
-import styled from "styled-components";
-import styleVar from "../../utils/style/style-variables";
-import colors from "../../utils/style/colors";
-import leftArrow from "../../assets/vector-left.svg";
-import rightArrow from "../../assets/vector-right.svg";
-import BoxImproBg from "../../assets/boximpro-background.png";
 import { useState } from "react";
-import { SliderProps } from "../../data/types";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import styleVar from "../../../utils/style/style-variables";
+import { Dialog } from "primereact/dialog";
+import { Button } from "primereact/button";
+import FirstSlideContent from "./FirstSlideContent";
+import SlideContent from "./SlideContent";
+import leftArrow from "../../../assets/vector-left.svg";
+import rightArrow from "../../../assets/vector-right.svg";
+import BoxImproBg from "../../../assets/boximpro-background.png";
+import { SliderProps } from "../../../data/types";
 
 const StyledSlider = styled.div`
   position: relative;
-`;
-
-const StyledTitleDiv = styled.div`
-  position: absolute;
-  left: 5%;
-  color: orange;
-  text-align: center;
-  @media (max-width: 1801px) {
-    left: 5%;
-  }
-  @media (max-width: 1276px) {
-    left: 3%;
-  }
-  @media (max-width: 975px) {
-    top: 5%;
-    left: 15%;
-  }
-  @media (max-width: 851px) {
-    left: 10%;
-  }
-  @media (max-width: 766px) {
-    left: 15%;
-  }
-  @media (max-width: 621px) {
-    left: 10%;
-  }
-  @media (max-width: 550px) {
-    left: 5%;
-  }
-`;
-
-const StyledTitle = styled.h1`
-  font-family: ${styleVar.titleFontFamily};
-  @media (max-width: 1651px) {
-    font-size: 46px;
-  }
-  @media (max-width: 1451px) {
-    font-size: 42px;
-  }
-  @media (max-width: 1351px) {
-    font-size: 40px;
-  }
-  @media (max-width: 975px) {
-    font-size: 20px;
-  }
-  @media (max-width: 767px) {
-    font-size: 15px;
-  }
-`;
-
-const StyledTitleDiv2 = styled.div`
-  position: absolute;
-  color: orange;
-  left: 10%;
-  display: flex;
-  flex-flow: column wrap;
-  align-items: flex-start;
-  @media (max-width: 975px) {
-    top: 5%;
-  }
-`;
-
-const StyledSubTitle = styled.h2`
-  color: ${colors.white};
-  font-weight: bolder;
-  @media (max-width: 975px) {
-    font-size: 18px;
-  }
-  @media (max-width: 767px) {
-    font-size: 13px;
-  }
 `;
 
 const StyledTextBox = styled.div`
@@ -188,10 +121,22 @@ const StyledCounter = styled.span`
   color: #ffffff;
 `;
 
+const StyledFlexDiv = styled.div`
+  width: 100%;
+  position: absolute;
+  bottom: 300px;
+  .p-button {
+    color: #fff;
+    margin-right: 10px;
+  }
+`;
+
 const Slider: React.FC<SliderProps> = ({ slides }) => {
   const [isSmall, setIsSmall] = useState({
     matches: window.matchMedia("(max-width: 767px)").matches,
   });
+
+  const [visible, setVisible] = useState(false);
 
   function screenListener() {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -219,15 +164,9 @@ const Slider: React.FC<SliderProps> = ({ slides }) => {
     <div>
       <StyledSlider>
         {isFirstSlide ? (
-          <StyledTitleDiv>
-            <StyledTitle>{slides[currentIndex].title}</StyledTitle>
-            <StyledSubTitle>{slides[currentIndex].subtitle}</StyledSubTitle>
-          </StyledTitleDiv>
+          <FirstSlideContent currentSlide={slides[currentIndex]} />
         ) : (
-          <StyledTitleDiv2>
-            <StyledTitle>{slides[currentIndex].title}</StyledTitle>
-            <StyledSubTitle>{slides[currentIndex].subtitle}</StyledSubTitle>
-          </StyledTitleDiv2>
+          <SlideContent currentSlide={slides[currentIndex]} />
         )}
         <StyledBackground src={BoxImproBg} />
         <StyledLeftBtn onClick={goToPrev}>
@@ -256,21 +195,10 @@ const Slider: React.FC<SliderProps> = ({ slides }) => {
     <div>
       <StyledSlider>
         {isFirstSlide ? (
-          <StyledTitleDiv>
-            <StyledTitle>{slides[currentIndex].title}</StyledTitle>
-            <StyledSubTitle>{slides[currentIndex].subtitle}</StyledSubTitle>
-          </StyledTitleDiv>
+          <FirstSlideContent currentSlide={slides[currentIndex]} />
         ) : (
-          <StyledTitleDiv2>
-            <StyledTitle>{slides[currentIndex].title}</StyledTitle>
-            <StyledSubTitle>{slides[currentIndex].subtitle}</StyledSubTitle>
-          </StyledTitleDiv2>
+          <SlideContent currentSlide={slides[currentIndex]} />
         )}
-        <div className='flex-center'>
-          <StyledTextBox>
-            <StyledText>{slides[currentIndex].text}</StyledText>
-          </StyledTextBox>
-        </div>
         <StyledBackground src={BoxImproBg} />
         <StyledLeftBtn onClick={goToPrev}>
           <img
@@ -289,6 +217,23 @@ const Slider: React.FC<SliderProps> = ({ slides }) => {
         <StyledCounter>
           {currentIndex + 1}/{slides.length}
         </StyledCounter>
+        <StyledFlexDiv className='flex-center'>
+          {slides[currentIndex] &&
+            slides[currentIndex].links.map((item) => (
+              <Link to={item.direction} key={`${item}-${item.direction}`}>
+                <Button label={item.label} />
+              </Link>
+            ))}
+          <Button label='En savoir plus !' onClick={() => setVisible(true)} />
+          <Dialog
+            header={slides[currentIndex].title}
+            visible={visible}
+            style={{ width: "50vw" }}
+            onHide={() => setVisible(false)}
+          >
+            {slides[currentIndex].text}
+          </Dialog>
+        </StyledFlexDiv>
       </StyledSlider>
     </div>
   );

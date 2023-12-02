@@ -61,13 +61,23 @@ export type Slide = {
   name: string,
   title: string,
   subtitle?: string,
-  text: string
+  text: string,
+  links: Link[],
+}
+
+export type Link = {
+  label: string,
+  direction: string
 }
 
 // Props
 
 export type SliderProps = {
   slides: Slide[];
+};
+
+export type SliderComponentProps = {
+  currentSlide: Slide;
 };
 
 export type PageProps = {

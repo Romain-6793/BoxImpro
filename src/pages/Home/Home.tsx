@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import styleVar from "../../utils/style/style-variables";
 import { slides } from "../../data/slides";
-import Slider from "../../components/homepage/Slider";
+import Slider from "../../components/homepage/Slider/Slider";
 
 const StyledMainDiv = styled.div`
   width: 100%;
