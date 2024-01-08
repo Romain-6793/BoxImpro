@@ -7,7 +7,7 @@ const colors: {
 } = {
     primary: 'purple',
     secondary: '#ff7417',
-    tertiary: '#c5c6d0',
+    tertiary: '#92000A',
     white: '#fff',
     black: 'black',
 };

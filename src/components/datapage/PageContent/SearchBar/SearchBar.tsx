@@ -1,10 +1,10 @@
 import { useDispatch } from "react-redux";
-import useUrl from "../../../utils/hooks/useUrl";
+import useUrl from "../../../../utils/hooks/useUrl";
 import { InputText } from "primereact/inputtext";
 import {
   filteredExercicesSearch,
   filteredSpecialistsSearch,
-} from "../../../slices/dataSlice";
+} from "../../../../slices/dataSlice";
 
 // The main Searchbar to display data depending on what you type
 

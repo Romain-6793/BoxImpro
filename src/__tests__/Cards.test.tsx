@@ -1,6 +1,6 @@
 import { fireEvent, render } from "@testing-library/react";
 import { useDispatch } from "react-redux";
-import Cards from "../components/datapage/Cards/Cards";
+import Cards from "../components/datapage/PageContent/MainContent/Cards/Cards";
 
 //We simulate react-redux (we use the spread operator to import it all) and we replace useDispatch by
 // jest.fn() to simulate a function

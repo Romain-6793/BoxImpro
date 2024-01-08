@@ -5,14 +5,14 @@ import colors from "../../../utils/style/colors";
 import styleVar from "../../../utils/style/style-variables";
 import useUrl from "../../../utils/hooks/useUrl";
 import { RootState, PageProps, State } from "../../../data/types";
-import MainContent from "../MainContent/MainContent";
-import DropdownFilter from "../DropdownFilter/DropdownFilter";
-import DropdownSort from "../DropdownSort/Dropdownsort";
-import SearchBar from "../SearchBar/SearchBar";
-import TagsSection from "../TagsSection/TagsSection";
+import MainContent from "./MainContent/MainContent";
+import DropdownFilter from "./DropdownFilter/DropdownFilter";
+import DropdownSort from "./DropdownSort/Dropdownsort";
+import SearchBar from "./SearchBar/SearchBar";
+import TagsSection from "./TagsSection/TagsSection";
 
 const StyledWrapper = styled.div`
-  background: ${colors.white};
+  background: ${colors.black};
 `;
 
 const StyledTitle = styled.h1`
@@ -21,19 +21,21 @@ const StyledTitle = styled.h1`
 `;
 
 const StyledSubtitleExercices = styled.h2`
-  color: black;
+  color: ${colors.tertiary};
   font-family: ${styleVar.titleFontFamily};
   font-size: 30px;
-  text-decoration: underline;
   margin-top: -25px;
+  padding: 5px;
+  border: 2px solid ${colors.tertiary};
 `;
 
 const StyledSubtitleSpecialists = styled.h2`
   color: ${colors.primary};
   font-family: ${styleVar.titleFontFamily};
   font-size: 30px;
-  text-decoration: underline;
   margin-top: -25px;
+  padding: 5px;
+  border: 2px solid ${colors.primary};
 `;
 
 const StyledSearchSection = styled.div`

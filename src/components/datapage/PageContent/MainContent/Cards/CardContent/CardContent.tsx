@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { ObjectItemProps } from "../../../data/types";
-import { getDisplayName } from "../../../utils/functions/getDisplayName";
+import { ObjectItemProps } from "../../../../../../data/types";
+import { getDisplayName } from "../../../../../../utils/functions/getDisplayName";
 
 const StyledDiv = styled.div`
   margin-bottom: 20px;

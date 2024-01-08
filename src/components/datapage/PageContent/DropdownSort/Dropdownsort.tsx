@@ -1,24 +1,26 @@
 import styled from "styled-components";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import useUrl from "../../../utils/hooks/useUrl";
+import useUrl from "../../../../utils/hooks/useUrl";
+import colors from "../../../../utils/style/colors";
 import {
   sortExercicesAZ,
   sortSpecialistsAZ,
   sortExercicesPopularity,
   sortSpecialistsPopularity,
   setSelectedSortingOption,
-} from "../../../slices/dataSlice";
+} from "../../../../slices/dataSlice";
 import { Dropdown } from "primereact/dropdown";
 import {
   RootState,
   State,
   DropdownItem,
   DropdownProps,
-} from "../../../data/types";
+} from "../../../../data/types";
 
 const StyledP = styled.p`
   margin-top: 10px;
+  color: ${colors.white};
 `;
 
 const DropdownSort: React.FC<DropdownProps> = ({ data }) => {

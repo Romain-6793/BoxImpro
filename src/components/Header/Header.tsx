@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import styleVar from "../../utils/style/style-variables";
 import colors from "../../utils/style/colors";
@@ -52,16 +53,16 @@ function Header(): JSX.Element {
   ];
 
   return (
-    <div>
-      <header className='purple-white'>
-        <StyledNav className='flex'>
+    <header className='purple-white'>
+      <StyledNav className='flex'>
+        <Link to='/'>
           <StyledLogo src={BoxImproLogo} />
-          <StyledUl className='purple-white'>
-            <Menubar model={navlist} />
-          </StyledUl>
-        </StyledNav>
-      </header>
-    </div>
+        </Link>
+        <StyledUl className='purple-white'>
+          <Menubar model={navlist} />
+        </StyledUl>
+      </StyledNav>
+    </header>
   );
 }
 

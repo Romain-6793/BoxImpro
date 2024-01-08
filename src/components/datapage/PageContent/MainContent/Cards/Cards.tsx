@@ -1,31 +1,32 @@
 import "primeicons/primeicons.css";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import styleVar from "../../../utils/style/style-variables";
-import colors from "../../../utils/style/colors";
-import useUrl from "../../../utils/hooks/useUrl";
+import styleVar from "../../../../../utils/style/style-variables";
+import colors from "../../../../../utils/style/colors";
+import useUrl from "../../../../../utils/hooks/useUrl";
 import { Card } from "primereact/card";
-import { Exercice, Specialist, CardsProps } from "../../../data/types";
-import CardContent from "../CardContent/CardContent";
+import { Exercice, Specialist, CardsProps } from "../../../../../data/types";
+import CardContent from "./CardContent/CardContent";
 import {
   increaseExercicesLikes,
   increaseSpecialistsLikes,
-} from "../../../slices/dataSlice";
+} from "../../../../../slices/dataSlice";
 
 const StyledMainExercices = styled.main`
   margin-top: ${styleVar.margin}px;
   .p-card {
     font-family: ${styleVar.fontFamily};
     width: 75%;
-    background: ${colors.tertiary};
-    border: 1px solid ${colors.black};
-    color: ${colors.black};
+    background: ${colors.white};
+    border: 1px solid ${colors.tertiary};
+    color: ${colors.tertiary};
     margin-bottom: 20px;
     position: relative;
   }
   .p-card-title {
     font-weight: normal;
-    background: black;
+    background: ${colors.tertiary};
     text-align: center;
     color: ${colors.white};
     border-radius: ${styleVar.borderRadius}px;
@@ -37,7 +38,7 @@ const StyledMainSpecialists = styled.main`
   .p-card {
     font-family: ${styleVar.fontFamily};
     width: 75%;
-    background: ${colors.tertiary};
+    background: ${colors.white};
     border: 1px solid ${colors.primary};
     color: ${colors.primary};
     margin-bottom: 20px;
@@ -91,12 +92,16 @@ const Cards: React.FC<CardsProps> = ({ data }) => {
   const dispatch = useDispatch();
   const currentURL = useUrl();
 
-  //externalize handleLikesClick
+  const [clickedItems, setClickedItems] = useState<number[]>([]);
 
   const handleLikesClick = (itemId: number) => {
-    currentURL.includes("exercices")
-      ? dispatch(increaseExercicesLikes(itemId))
-      : dispatch(increaseSpecialistsLikes(itemId));
+    if (!clickedItems.includes(itemId)) {
+      setClickedItems([...clickedItems, itemId]);
+
+      currentURL.includes("exercices")
+        ? dispatch(increaseExercicesLikes(itemId))
+        : dispatch(increaseSpecialistsLikes(itemId));
+    }
   };
 
   return currentURL.includes("exercices") ? (
