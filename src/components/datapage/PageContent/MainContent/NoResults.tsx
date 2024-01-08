@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
 const StyledDiv = styled.div`
+  margin-top: 50px;
   min-height: 500px;
 `;
 
 const StyledP = styled.p`
   font-size: 20px;
-  color: #fff;
 `;
 
 const NoResults = () => {

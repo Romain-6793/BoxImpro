@@ -5,14 +5,22 @@ import colors from "../../../utils/style/colors";
 import styleVar from "../../../utils/style/style-variables";
 import useUrl from "../../../utils/hooks/useUrl";
 import { RootState, PageProps, State } from "../../../data/types";
+import ExercicesPageTitle from "./ExercicesPageTitle";
+import SpecialistsPageTitle from "./SpecialistsPageTitle";
 import MainContent from "./MainContent/MainContent";
 import DropdownFilter from "./DropdownFilter/DropdownFilter";
-import DropdownSort from "./DropdownSort/Dropdownsort";
-import SearchBar from "./SearchBar/SearchBar";
+import DropdownSort from "./DropdownSort/DropdownSort";
 import TagsSection from "./TagsSection/TagsSection";
 
-const StyledWrapper = styled.div`
+const StyledBlackBands = styled.div`
   background: ${colors.black};
+`;
+
+const StyledWrapper = styled.div`
+  width: 80%;
+  margin-top: 20px;
+  border-radius: 5px;
+  background: ${colors.white};
 `;
 
 const StyledTitle = styled.h1`
@@ -20,34 +28,18 @@ const StyledTitle = styled.h1`
   font-family: ${styleVar.titleFontFamily};
 `;
 
-const StyledSubtitleExercices = styled.h2`
-  color: ${colors.tertiary};
-  font-family: ${styleVar.titleFontFamily};
-  font-size: 30px;
-  margin-top: -25px;
-  padding: 5px;
-  border: 2px solid ${colors.tertiary};
-`;
-
-const StyledSubtitleSpecialists = styled.h2`
-  color: ${colors.primary};
-  font-family: ${styleVar.titleFontFamily};
-  font-size: 30px;
-  margin-top: -25px;
-  padding: 5px;
-  border: 2px solid ${colors.primary};
-`;
-
 const StyledSearchSection = styled.div`
   width: 75%;
   height: ${styleVar.height}px;
-  justify-content: space-around;
+  align-items: center;
   margin-bottom: ${styleVar.margin}px;
-  @media (max-width: 975px) {
-    width: 75%;
+  @media (max-width: 1483px) {
     height: 200px;
   }
-  @media (max-width: 768px) {
+  @media (max-width: 790px) {
+    height: 220px;
+  }
+  @media (max-width: 767px) {
     height: 0;
   }
 `;
@@ -56,7 +48,7 @@ const StyledSearchSection = styled.div`
 // From there I recover all the data I need (list of objects, of dropdowns, of tags). Then my data
 // will display depending on the URL (exercices or specialists page) as well as my subtitle.
 
-const PageContent: React.FC<PageProps> = ({ subtitle }) => {
+const PageContent: React.FC<PageProps> = ({ pageTitle }) => {
   const [isSmall, setIsSmall] = useState({
     matches: window.matchMedia("(max-width: 767px)").matches,
   });
@@ -91,36 +83,38 @@ const PageContent: React.FC<PageProps> = ({ subtitle }) => {
   const tagData = exercicesPage ? exercicesTagsData : specialistsTagsData;
 
   return isSmall.matches ? (
-    <StyledWrapper className='flex-column'>
-      <StyledTitle>Box Impro</StyledTitle>;{" "}
-      {exercicesPage ? (
-        <StyledSubtitleExercices>{subtitle}</StyledSubtitleExercices>
-      ) : (
-        <StyledSubtitleSpecialists>{subtitle}</StyledSubtitleSpecialists>
-      )}
-      <StyledSearchSection className='flex'>
-        <DropdownSort data={dropdownData} />
-        <SearchBar />
-      </StyledSearchSection>
-      <TagsSection data={tagData} />
-      <MainContent data={data}></MainContent>
-    </StyledWrapper>
+    <StyledBlackBands className='flex-column'>
+      <StyledWrapper className='flex-column'>
+        <StyledTitle>Box Impro</StyledTitle>
+        {exercicesPage ? (
+          <ExercicesPageTitle pageTitle={pageTitle}></ExercicesPageTitle>
+        ) : (
+          <SpecialistsPageTitle pageTitle={pageTitle}></SpecialistsPageTitle>
+        )}
+        <StyledSearchSection className='flex-column'>
+          <DropdownSort data={dropdownData} />
+        </StyledSearchSection>
+        <TagsSection data={tagData} />
+        <MainContent data={data}></MainContent>
+      </StyledWrapper>
+    </StyledBlackBands>
   ) : (
-    <StyledWrapper className='flex-column'>
-      <StyledTitle>Box Impro</StyledTitle>;
-      {exercicesPage ? (
-        <StyledSubtitleExercices>{subtitle}</StyledSubtitleExercices>
-      ) : (
-        <StyledSubtitleSpecialists>{subtitle}</StyledSubtitleSpecialists>
-      )}
-      <StyledSearchSection className='flex'>
-        <DropdownFilter data={dropdownData} />
-        <DropdownSort data={dropdownData} />
-        <SearchBar />
-      </StyledSearchSection>
-      <TagsSection data={tagData} />
-      <MainContent data={data}></MainContent>
-    </StyledWrapper>
+    <StyledBlackBands className='flex-center'>
+      <StyledWrapper className='flex-column'>
+        <StyledTitle>Box Impro</StyledTitle>
+        {exercicesPage ? (
+          <ExercicesPageTitle pageTitle={pageTitle}></ExercicesPageTitle>
+        ) : (
+          <SpecialistsPageTitle pageTitle={pageTitle}></SpecialistsPageTitle>
+        )}
+        <StyledSearchSection className='flex'>
+          <DropdownFilter data={dropdownData} />
+          <DropdownSort data={dropdownData} />
+        </StyledSearchSection>
+        <TagsSection data={tagData} />
+        <MainContent data={data}></MainContent>
+      </StyledWrapper>
+    </StyledBlackBands>
   );
 };
 

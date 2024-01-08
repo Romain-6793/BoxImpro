@@ -808,6 +808,7 @@
     box-shadow 0.2s;
   border-radius: 3px;
   margin-left: 15px;
+  margin-top: 5px;
 }
 .p-dropdown:not(.p-disabled):hover {
   border-color: #9c27b0;

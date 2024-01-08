@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import useUrl from "../../../../utils/hooks/useUrl";
-import colors from "../../../../utils/style/colors";
 import {
   setSelectedOption,
   filterExercices,
@@ -18,9 +17,15 @@ import {
   DropdownProps,
 } from "../../../../data/types";
 
+const StyledDiv = styled.div`
+  margin-right: 10px;
+`;
+
 const StyledP = styled.p`
   margin-top: 10px;
-  color: ${colors.white};
+  @media (max-width: 776px) {
+    margin-top: -100px;
+  }
 `;
 
 const DropdownFilter: React.FC<DropdownProps> = ({ data }) => {
@@ -65,7 +70,7 @@ const DropdownFilter: React.FC<DropdownProps> = ({ data }) => {
   // have a filtering sort when you click on any option.
 
   return (
-    <div className='flex'>
+    <StyledDiv className='flex-center'>
       <StyledP>Filtrer par : </StyledP>
       <div>
         {data &&
@@ -84,7 +89,7 @@ const DropdownFilter: React.FC<DropdownProps> = ({ data }) => {
               />
             ))}
       </div>
-    </div>
+    </StyledDiv>
   );
 };
 

@@ -1,10 +1,16 @@
 import { useDispatch } from "react-redux";
-import useUrl from "../../../../utils/hooks/useUrl";
+import styled from "styled-components";
+import useUrl from "../../../../../utils/hooks/useUrl";
 import { InputText } from "primereact/inputtext";
 import {
   filteredExercicesSearch,
   filteredSpecialistsSearch,
-} from "../../../../slices/dataSlice";
+} from "../../../../../slices/dataSlice";
+
+const StyledDiv = styled.div`
+  margin-left: 5px;
+  margin-top: 5px;
+`;
 
 // The main Searchbar to display data depending on what you type
 
@@ -26,12 +32,12 @@ const SearchBar = () => {
     action();
   };
   return (
-    <div>
+    <StyledDiv>
       <span className='p-input-icon-left'>
         <i className='pi pi-search' />
         <InputText placeholder='Rechercher' onChange={handleSearch} />
       </span>
-    </div>
+    </StyledDiv>
   );
 };
 

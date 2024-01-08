@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import useUrl from "../../../../utils/hooks/useUrl";
-import colors from "../../../../utils/style/colors";
 import {
   sortExercicesAZ,
   sortSpecialistsAZ,
@@ -11,6 +10,7 @@ import {
   setSelectedSortingOption,
 } from "../../../../slices/dataSlice";
 import { Dropdown } from "primereact/dropdown";
+import SearchBar from "./SearchBar/SearchBar";
 import {
   RootState,
   State,
@@ -20,7 +20,6 @@ import {
 
 const StyledP = styled.p`
   margin-top: 10px;
-  color: ${colors.white};
 `;
 
 const DropdownSort: React.FC<DropdownProps> = ({ data }) => {
@@ -84,6 +83,7 @@ const DropdownSort: React.FC<DropdownProps> = ({ data }) => {
               />
             ))}
       </div>
+      <SearchBar />
     </div>
   );
 };

@@ -17,8 +17,8 @@ const StyledMainExercices = styled.main`
   margin-top: ${styleVar.margin}px;
   .p-card {
     font-family: ${styleVar.fontFamily};
-    width: 75%;
-    background: ${colors.white};
+    width: 80%;
+    background: ${colors.grey};
     border: 1px solid ${colors.tertiary};
     color: ${colors.tertiary};
     margin-bottom: 20px;
@@ -37,8 +37,8 @@ const StyledMainSpecialists = styled.main`
   margin-top: ${styleVar.margin}px;
   .p-card {
     font-family: ${styleVar.fontFamily};
-    width: 75%;
-    background: ${colors.white};
+    width: 90%;
+    background: ${colors.grey};
     border: 1px solid ${colors.primary};
     color: ${colors.primary};
     margin-bottom: 20px;

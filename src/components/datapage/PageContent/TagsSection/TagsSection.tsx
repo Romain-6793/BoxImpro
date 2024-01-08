@@ -12,6 +12,12 @@ import {
 import { Tag } from "primereact/tag";
 import { TagProps, TagType } from "../../../../data/types";
 
+const StyledDiv = styled.div`
+  margin-top: 20px;
+  display: flex;
+  position: static;
+`;
+
 const StyledSpan = styled.span`
   margin-right: 10px;
 `;
@@ -58,7 +64,7 @@ const TagsSection: React.FC<TagProps> = ({ data }) => {
   };
 
   return (
-    <div className='flex'>
+    <StyledDiv>
       {data.map((item: TagType) => (
         <Tag key={item.id}>
           <div className='flex align-items-center gap-2'>
@@ -72,7 +78,7 @@ const TagsSection: React.FC<TagProps> = ({ data }) => {
           </div>
         </Tag>
       ))}
-    </div>
+    </StyledDiv>
   );
 };
 

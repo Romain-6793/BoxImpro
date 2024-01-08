@@ -81,7 +81,7 @@ export type SliderComponentProps = {
 };
 
 export type PageProps = {
-  subtitle: string;
+  pageTitle: string;
 };
 
 export type DropdownProps = {
