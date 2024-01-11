@@ -38,28 +38,7 @@ const dataSlice = createSlice({
   name: "userData",
   initialState,
   reducers: {
-    // storeUsersList(state, action) {
-
-    //   const usersArray = [...state.usersArray];
-    //   localStorage.setItem("usersArray", JSON.stringify(usersArray))
-    // },
-    // loadData(state, action) {
-    //   const data = localStorage.getItem("usersArray")
-    //   if (data) {
-    //     return {
-    //       ...state,
-    //       usersArray: JSON.parse(data),
-    //       filteredArray: JSON.parse(data).sort((a, b) => (a.firstName > b.firstName) ?
-    //         1
-    //         :
-    //         (a.firstName < b.firstName) ?
-    //           -1
-    //           :
-    //           0
-    //       )
-    //     };
-    //   } else return { ...state };
-    // },
+    // set data to localStorage ? see argent bank project
     setSelectedOption: (state, action: PayloadAction<string>) => {
       if (action.payload) {
         return {

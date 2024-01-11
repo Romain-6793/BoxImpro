@@ -12,7 +12,7 @@ import DropdownFilter from "./DropdownFilter/DropdownFilter";
 import DropdownSort from "./DropdownSort/DropdownSort";
 import TagsSection from "./TagsSection/TagsSection";
 
-const StyledBlackBands = styled.div`
+const StyledBlackBg = styled.div`
   background: ${colors.black};
 `;
 
@@ -83,38 +83,38 @@ const PageContent: React.FC<PageProps> = ({ pageTitle }) => {
   const tagData = exercicesPage ? exercicesTagsData : specialistsTagsData;
 
   return isSmall.matches ? (
-    <StyledBlackBands className='flex-column'>
+    <StyledBlackBg className='flex-column'>
       <StyledWrapper className='flex-column'>
         <StyledTitle>Box Impro</StyledTitle>
         {exercicesPage ? (
-          <ExercicesPageTitle pageTitle={pageTitle}></ExercicesPageTitle>
+          <ExercicesPageTitle pageTitle={pageTitle} />
         ) : (
-          <SpecialistsPageTitle pageTitle={pageTitle}></SpecialistsPageTitle>
+          <SpecialistsPageTitle pageTitle={pageTitle} />
         )}
         <StyledSearchSection className='flex-column'>
           <DropdownSort data={dropdownData} />
         </StyledSearchSection>
         <TagsSection data={tagData} />
-        <MainContent data={data}></MainContent>
+        <MainContent data={data} />
       </StyledWrapper>
-    </StyledBlackBands>
+    </StyledBlackBg>
   ) : (
-    <StyledBlackBands className='flex-center'>
+    <StyledBlackBg className='flex-center'>
       <StyledWrapper className='flex-column'>
         <StyledTitle>Box Impro</StyledTitle>
         {exercicesPage ? (
-          <ExercicesPageTitle pageTitle={pageTitle}></ExercicesPageTitle>
+          <ExercicesPageTitle pageTitle={pageTitle} />
         ) : (
-          <SpecialistsPageTitle pageTitle={pageTitle}></SpecialistsPageTitle>
+          <SpecialistsPageTitle pageTitle={pageTitle} />
         )}
         <StyledSearchSection className='flex'>
           <DropdownFilter data={dropdownData} />
           <DropdownSort data={dropdownData} />
         </StyledSearchSection>
         <TagsSection data={tagData} />
-        <MainContent data={data}></MainContent>
+        <MainContent data={data} />
       </StyledWrapper>
-    </StyledBlackBands>
+    </StyledBlackBg>
   );
 };
 

@@ -3,7 +3,7 @@ import PageContent from "../../components/datapage/PageContent/PageContent";
 const Exercices = (): JSX.Element => {
   return (
     <div>
-      <PageContent pageTitle='Exercices'></PageContent>
+      <PageContent pageTitle='Exercices' />
     </div>
   );
 };
